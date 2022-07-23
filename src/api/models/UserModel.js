@@ -1,4 +1,4 @@
-class UserModel {
+export class UserModel {
     id;
     email;
     cpf;
@@ -12,7 +12,21 @@ class UserModel {
     }
 }
 
-export default UserModel;
+export function deleteUsers(){
+    const users = [
+       { id: "1234",
+        email: "dadomocado@gmail.com",
+        cpf: 12345678,
+        password: "senhateste123"},
+        {id: "4321",
+        email: "dadomocado@gmail.com",
+        cpf: 22854598,
+        password: "senhateste123"}
+]
+    return users;
+}
+
+
 
 /* Criamos uma classe para representar o objeto padrão de usuário,
 para futuramente implemetá-lo no banco de dados, com as seguintes informações:
