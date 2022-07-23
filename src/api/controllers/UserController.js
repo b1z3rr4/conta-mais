@@ -1,5 +1,7 @@
 import createUserService from '../services/user/createUser.service.js';
+import deleteUserService from '../services/user/deleteUser.service.js';
 import listUserService from '../services/user/listUser.service.js';
+
 
 class UserController {
     constructor(){}
@@ -14,6 +16,14 @@ class UserController {
         const { email, cpf, password } = req.body;
         const user = new createUserService(email, cpf, password);
         res.send(user);
+    }
+
+    //put
+
+    deleteUser(req, res){
+        const { id } = req.params;
+         const user = new deleteUserService(id);
+            res.send(user);
     }
 }
 
