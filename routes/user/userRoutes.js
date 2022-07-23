@@ -3,9 +3,7 @@ import UserController from '../../src/api/controllers/UserController.js';
 
 const routesUser = Router();
 
-routesUser.get('/', UserController.getUser);
+routesUser.get('/:id', UserController.getUser);
 routesUser.post('/', UserController.postUser);
-//put
-//delete
 
 export default routesUser;
