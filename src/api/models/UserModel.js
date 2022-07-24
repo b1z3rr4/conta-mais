@@ -1,3 +1,14 @@
+let users = [
+    {id: "1234",
+    email: "dadomocado@gmail.com",
+    cpf: 12345678,
+    password: "senhateste123"},
+    {id: "4321",
+    email: "dadomocado@gmail.com",
+    cpf: 12345678,
+    password: "senhateste123"},
+]
+
 export class UserModel {
     id;
     email;
@@ -11,50 +22,22 @@ export class UserModel {
         this.password = password;
     }
 }
-    export function putUser() {
-        const user = [
-            {id: "1234",
-            email: "dadomocado@gmail.com",
-            cpf: 12345678,
-            password: "senhateste123"},
-            {id: "4321",
-            email: "dadomocado@gmail.com",
-            cpf: 12345678,
-            password: "senhateste123"},
-        
-        ]
-        return user;
+
+export function postUser(user){
+    users.push(user);
 }
 
+export function putUser(data) {
+    users = data;
+}
 
-export function deleteUsers(){
-    const users = [
-       { id: "1234",
-        email: "dadomocado@gmail.com",
-        cpf: 12345678,
-        password: "senhateste123"},
-        {id: "4321",
-        email: "dadomocado@gmail.com",
-        cpf: 22854598,
-        password: "senhateste123"}
-]
-    return users;
+export function deleteUsers(data){
+    users = data;
 }
 
 export function getUsers(){
-    const users = [
-         {id: "1234",
-         email: "dadomocado@gmail.com",
-         cpf: 12345678,
-         password: "senhateste123"},
-         {id: "4321",
-         email: "dadomocado2@gmail.com",
-         cpf: 22345678,
-         password: "senhateste123"}
-    ]
     return users;
 }
-
 
 /* Criamos uma classe para representar o objeto padrão de usuário,
 para futuramente implemetá-lo no banco de dados, com as seguintes informações:
