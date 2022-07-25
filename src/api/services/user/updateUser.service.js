@@ -1,4 +1,3 @@
-import encriptyPassword from "../../../../utils/encriptyPassword.js";
 import { UserModel, putUser, getUsers} from "../../models/UserModel.js";
 
 class updateUserService {
@@ -14,10 +13,9 @@ class updateUserService {
         });
         this.newUser = new UserModel(
             this.data[this.userIndex].id,
-            {
-                email: param.email || this.data[this.userIndex].email, 
-                cpf: param.cpf || this.data[this.userIndex].cpf
-            }, encriptyPassword(param.password) || this.data[this.userIndex].password
+            param.email || this.data[this.userIndex].email, 
+            param.cpf || this.data[this.userIndex].cpf,
+            this.data[this.userIndex].password
         )
         this.data[this.userIndex] = this.newUser;
         this.newData = this.data;

@@ -10,7 +10,7 @@ class createUserService {
     constructor(email, cpf, passowrd){
         this.id = generatorId();
         this.hashPass = encriptyPassword(passowrd);
-        this.user = new UserModel(this.id, {email: email, cpf: cpf}, this.hashPass);
+        this.user = new UserModel(this.id, email, cpf, this.hashPass);
         postUser(this.user);
         return {
             id: this.user.id,

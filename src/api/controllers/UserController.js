@@ -10,7 +10,6 @@ class UserController {
         const { id } = req.params;
         const user = new listUserService(id);
         res.send(user);
-
     }
 
     postUser(req, res){
@@ -21,13 +20,12 @@ class UserController {
     
     putUser(req, res){
         const { id } = req.params;
-        const { email, cpf, password } = req.body;
-        const param = {
+        const { email, cpf } = req.body;
+        const params = {
             email,
-            cpf,
-            password
+            cpf
         }
-        const user = new updateUserService(id, param);
+        const user = new updateUserService(id, params);
         res.send(user);
     }
 
