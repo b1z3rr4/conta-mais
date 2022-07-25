@@ -44,7 +44,7 @@ class userValidator {
            id: yup.string().strict().required('O id não foi passado!')
         })
 
-        await schema.validate(req.body).catch(err => {
+        await schema.validate(req.params).catch(err => {
             return res.status(400).json({
               error: err.errors
             })
