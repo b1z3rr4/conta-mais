@@ -1,15 +1,20 @@
-import { deleteUsers } from '../../models/UserModel.js';
+import { deleteUsers, getUsers } from '../../models/UserModel.js';
 
 class deleteUserService {
+    data;
+    newData;
+    actDelete;
+
     constructor(id){
-        const data = deleteUsers();
-        const newData = data.filter((item) => {
+        this.data = getUsers();
+        this.newData = this.data.filter((item) => {
             return item.id !== id;
         });
-        return newData;
-
+        this.actDelete = deleteUsers(this.newData);
+        return {
+            status: "sucess"
+        };
     }
 }
-
 
 export default deleteUserService;

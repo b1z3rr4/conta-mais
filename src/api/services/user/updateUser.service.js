@@ -1,22 +1,30 @@
-import encriptyPassword from "../../../../utils/encriptyPassword.js";
-import { putUser} from "../../models/UserModel.js";
+import { UserModel, putUser, getUsers} from "../../models/UserModel.js";
 
 class updateUserService {
+    data;
+    userIndex;
+    newUser;
+    newData;
+
     constructor(id, param){
-        const data = putUser();
-        const userIndex = data.findIndex((item) => {
+        this.data = getUsers();
+        this.userIndex = this.data.findIndex((item) => {
             return item.id === id;
         });
-        const newUser = {
-            id: data[userIndex].id,
-            email: param.email || data[userIndex].email, 
-            cpf: param.cpf || data[userIndex].cpf,
-            password: encriptyPassword(param.password) || data[userIndex].password
-        }
-
-        data.splice(userIndex, 1, newUser);
-        return data;
+        this.newUser = new UserModel(
+            this.data[this.userIndex].id,
+            param.email || this.data[this.userIndex].email, 
+            param.cpf || this.data[this.userIndex].cpf,
+            this.data[this.userIndex].password
+        )
+        this.data[this.userIndex] = this.newUser;
+        this.newData = this.data;
+        putUser(this.newData);
+        return {
+            email: this.newUser.email, 
+            cpf: this.newUser.cpf
+        };
     }
 }
 
-export default updateUserService; 
+export default updateUserService;

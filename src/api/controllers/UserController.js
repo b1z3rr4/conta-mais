@@ -3,16 +3,13 @@ import updateUserService from '../services/user/updateUser.service.js';
 import deleteUserService from '../services/user/deleteUser.service.js';
 import listUserService from '../services/user/listUser.service.js';
 
-
 class UserController {
     constructor(){}
 
     getUser(req, res){
-
         const { id } = req.params;
         const user = new listUserService(id);
         res.send(user);
-
     }
 
     postUser(req, res){
@@ -22,22 +19,20 @@ class UserController {
     }
     
     putUser(req, res){
-        const { id } = req.params
-        const { email, cpf, password } = req.body;
-        const param = {
+        const { id } = req.params;
+        const { email, cpf } = req.body;
+        const params = {
             email,
-            cpf,
-            password
+            cpf
         }
-        const user = new updateUserService(id, param);
+        const user = new updateUserService(id, params);
         res.send(user);
-        }
+    }
 
     deleteUser(req, res){
         const { id } = req.params;
-         const user = new deleteUserService(id);
-            res.send(user);
-
+        const user = new deleteUserService(id);
+        res.send(user);
     }
 }
 
