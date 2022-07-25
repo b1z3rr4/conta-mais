@@ -55,3 +55,11 @@ server.js -- app.js -- /routes -- /controllers -- /services -- /models -- banco 
 - Delete
     Retornar erro para caso o id passado não seja encontrado.
     Se o id não for passado deve retornar erro.
+
+Passo a passo para atualizar a branch
+
+- git checkout main
+- git pull
+- git checkout <suabranch>
+- git pull origin main
+  
