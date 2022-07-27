@@ -6,7 +6,7 @@ function emailValidator(req, res, next){
     const user = data.find((item)=>{
         return item.email === email
     })
-    if(!user){
+    if(user){
         return res.status(400).json({
             status: 'Email já cadastrado!'
         })
