@@ -1,12 +1,16 @@
 import yup from 'yup';
-
+import cpfValidator from './cpfValidator';
 class userValidator {
     constructor(){}
 
     async postValidator(req, res, next){
         const schema = yup.object().shape({
             email: yup.string().strict().required('Email é obrigatório!').email('Formato de email inválido'),
-            cpf: yup.number().strict().positive().integer().min(11),
+            cpf: yup.number().strict().positive().integer().test(
+                'test-invalid-cpf',
+                'CPF inválido!',
+                (cpf) => cpfValidator(cpf)
+            ),
             password: yup.string().strict().required('Senha é obrigatória!').matches(
                 /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
                 `A senha precisa ter no mínimo 8 caracteres,`+ 
