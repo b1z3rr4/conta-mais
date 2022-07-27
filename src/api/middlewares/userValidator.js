@@ -1,12 +1,12 @@
 import yup from 'yup';
-import cpfValidator from './cpfValidator';
+import cpfValidator from './cpfValidator.js';
 class userValidator {
     constructor(){}
 
     async postValidator(req, res, next){
         const schema = yup.object().shape({
             email: yup.string().strict().required('Email é obrigatório!').email('Formato de email inválido'),
-            cpf: yup.number().strict().positive().integer().test(
+            cpf: yup.string().strict().test(
                 'test-invalid-cpf',
                 'CPF inválido!',
                 (cpf) => cpfValidator(cpf)
