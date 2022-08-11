@@ -31,7 +31,11 @@ class userValidator {
         const schema = yup.object().shape({
             id: yup.string().strict(),
             email: yup.string().strict().required('Email é obrigatório!').email('Formato de email inválido'),
-            cpf: yup.number().strict().positive().integer().min(11)
+            cpf: yup.string().strict().test(
+                'test-invalid-cpf',
+                'CPF inválido!',
+                (cpf) => cpfValidator(cpf)
+            ),
         })
 
         await schema.validate(req.body).catch(err => {
