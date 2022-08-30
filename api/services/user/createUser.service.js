@@ -1,5 +1,5 @@
-import encriptyPassword from "../../../../utils/encriptyPassword.js";
-import generatorId from "../../../../utils/generatorId.js";
+import encriptyPassword from "../../../utils/encriptyPassword.js";
+import generatorId from "../../../utils/generatorId.js";
 import { UserModel, postUser } from '../../models/UserModel.js';
 
 class createUserService {

@@ -1,8 +1,8 @@
 import { Router } from "express";
-import UserController from '../../src/api/controllers/UserController.js';
-import userValidator from "../../src/api/middlewares/userValidator.js";
-import idValidator from "../../src/api/middlewares/idValidator.js";
-import emailValidator from "../../src/api/middlewares/emailValidator.js";
+import UserController from '../../api/controllers/UserController.js';
+import userValidator from "../../api/middlewares/userValidator.js";
+import idValidator from "../../api/middlewares/idValidator.js";
+import emailValidator from "../../api/middlewares/emailValidator.js";
 
 const routesUser = Router();
 
