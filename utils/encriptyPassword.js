@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+const crypto = require('crypto');
 //import 'dotenv/config';
 
 function encriptyPassword(password){
@@ -7,4 +7,4 @@ function encriptyPassword(password){
     return hash;
 }
 
-export default encriptyPassword;
+module.exports = encriptyPassword;

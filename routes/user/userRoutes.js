@@ -1,8 +1,8 @@
-import { Router } from "express";
-import UserController from '../../api/controllers/UserController.js';
-import userValidator from "../../api/middlewares/userValidator.js";
-import idValidator from "../../api/middlewares/idValidator.js";
-import emailValidator from "../../api/middlewares/emailValidator.js";
+const { Router } = require("express");
+const UserController = require('../../api/controllers/UserController.js');
+const userValidator = require("../../api/middlewares/userValidator.js");
+const idValidator = require("../../api/middlewares/idValidator.js");
+const emailValidator = require("../../api/middlewares/emailValidator.js");
 
 const routesUser = Router();
 
@@ -11,4 +11,4 @@ routesUser.post('/', userValidator.postValidator, emailValidator, UserController
 routesUser.put('/:id', userValidator.putValidator, idValidator, UserController.putUser);
 routesUser.delete('/:id', userValidator.deleteValidator, idValidator, UserController.deleteUser);
 
-export default routesUser;
+module.exports = routesUser;
