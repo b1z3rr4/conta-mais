@@ -1,4 +1,4 @@
-import { getUsers } from '../models/UserModel.js';
+const { getUsers } = require('../models/UserModel.js');
 
 function emailValidator(req, res, next){
     const { email } = req.body;
@@ -14,4 +14,4 @@ function emailValidator(req, res, next){
     next();
 }
 
-export default emailValidator
+module.exports = emailValidator

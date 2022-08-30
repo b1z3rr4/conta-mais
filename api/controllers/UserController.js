@@ -1,7 +1,7 @@
-import createUserService from '../services/user/createUser.service.js';
-import updateUserService from '../services/user/updateUser.service.js';
-import deleteUserService from '../services/user/deleteUser.service.js';
-import listUserService from '../services/user/listUser.service.js';
+const createUserService = require('../services/user/createUser.service.js');
+const updateUserService = require('../services/user/updateUser.service.js');
+const deleteUserService = require('../services/user/deleteUser.service.js');
+const listUserService = require('../services/user/listUser.service.js');
 
 class UserController {
     constructor(){}
@@ -36,4 +36,4 @@ class UserController {
     }
 }
 
-export default new UserController();
+module.exports = new UserController();

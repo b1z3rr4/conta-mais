@@ -1,6 +1,6 @@
-import encriptyPassword from "../../../utils/encriptyPassword.js";
-import generatorId from "../../../utils/generatorId.js";
-import { UserModel, postUser } from '../../models/UserModel.js';
+const encriptyPassword = require("../../../utils/encriptyPassword.js");
+const generatorId = require("../../../utils/generatorId.js");
+const { UserModel, postUser } = require('../../models/UserModel.js');
 
 class createUserService {
     id;
@@ -20,4 +20,4 @@ class createUserService {
     }
 }
 
-export default createUserService;
+module.exports = createUserService;

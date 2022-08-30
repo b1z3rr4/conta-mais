@@ -1,5 +1,5 @@
-import routesUser from './user/userRoutes.js';
+const routesUser = require('./user/userRoutes.js');
 
 const routes = routesUser;
 
-export default routes;
+module.exports = routes;
