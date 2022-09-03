@@ -11,16 +11,25 @@ class userRepository {
         return this.user;
     }
 
-    async get(id){
+    async getById(id){
         if(id){
             this.user = await UserModel.findAll({
                 where: {
                     id: id
-                  }
+                }
             }) 
         } else {
             this.user = await UserModel.findAll() 
         }
+        return this.user;
+    }
+
+    async getByEmail(email){
+        this.user = await UserModel.findAll({
+            where: {
+                email: email
+            }
+        })
         return this.user;
     }
 

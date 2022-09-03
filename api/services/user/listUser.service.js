@@ -6,12 +6,12 @@ class listUserService {
     async listUsers(id){
         this.repository = new userRepository();
         if(id){
-            this.users = await this.repository.get(id);
+            this.users = await this.repository.getById(id);
         } else {
-            this.users = await this.repository.get();
+            this.users = await this.repository.getById();
         }
         
-        if(this.users.length > 1){
+        if(this.users.length > 0){
             return {
                 status: 200,
                 message: this.users
