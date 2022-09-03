@@ -3,7 +3,6 @@ import { Router } from "express";
 
 const routesAuth = Router();
 
-routesAuth.get('/login', AuthController.login);
-routesAuth.get('/logout', AuthController.logout);
+routesAuth.post('/auth/token', AuthController.auth);
 
 export default routesAuth;

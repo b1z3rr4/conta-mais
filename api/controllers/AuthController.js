@@ -1,18 +1,23 @@
 import verifyUserLogin from '../services/auth/verifyUserLogin.js';
+import generateToken from '../services/auth/token.js';
 
 class AuthController {
     
     constructor(){}
 
-    async login(req, res) {
+    async auth(req, res) {
+        let token;
         const { email, password } = req.body;
         const services = new verifyUserLogin();
         const user = await services.verifyUser(email, password);
-        res.json(user);
-    }
-
-    logout(req, res) {
-
+        if(user){
+            token = await generateToken(email)
+            res.json(token);
+            return
+        }
+        res.status(400).json({
+            message: 'Not authorized!'
+        })
     }
 }
 
