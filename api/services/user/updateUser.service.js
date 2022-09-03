@@ -1,4 +1,4 @@
-const { UserModel, putUser, getUsers} = require("../../models/UserModel.js");
+import { UserModel, putUser, getUsers} from "../../models/UserModel.js";
 
 class updateUserService {
     data;
@@ -27,4 +27,4 @@ class updateUserService {
     }
 }
 
-module.exports = updateUserService;
+export default updateUserService;

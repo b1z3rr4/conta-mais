@@ -1,40 +1,41 @@
-let users = [
-    {id: "1234",
-    email: "dadomocado@gmail.com",
-    cpf: 12345678,
-    password: "senhateste123"},
-    {id: "4321",
-    email: "dadomocado@gmail.com",
-    cpf: 12345678,
-    password: "senhateste123"},
-]
+import Sequelize, { Model } from "sequelize";
+import databaseConfig from "../../config/database.js";
 
-export class UserModel {
-    id;
-    email;
-    cpf;
-    password;
+const sequelize = new Sequelize(databaseConfig);
 
-    constructor(id, email, cpf, password){
-        this.id = id;
-        this.email = email;
-        this.cpf = cpf || undefined;
-        this.password = password;
-    }
-}
+class UserModel extends Model {}
 
-export function postUser(user){
-    users.push(user);
-}
+UserModel.init(
+  {
+    id: {
+      type: Sequelize.UUID,
+      allowNull: false,
+      primaryKey: true,
+    },
+    name: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password_hash: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    cpf: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
 
-export function putUser(data) {
-    users = data;
-}
+  },
+  {
+    sequelize,
+    modelName: "users",
+    timestamps: false,
+  }
+);
 
-export function deleteUsers(data){
-    users = data;
-}
-
-export function getUsers(){
-    return users;
-}
+export default UserModel;

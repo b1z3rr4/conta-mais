@@ -1,23 +1,26 @@
-const encriptyPassword = require("../../../utils/encriptyPassword.js");
-const generatorId = require("../../../utils/generatorId.js");
-const { UserModel, postUser } = require('../../models/UserModel.js');
+import encriptyPassword from "../../../utils/encriptyPassword.js";
+import generatorId from "../../../utils/generatorId.js";
+import UserModel from '../../models/UserModel.js';
 
 class createUserService {
     id;
     hashPass;
     user;
+    //se der merda mexe aqui
+    constructor(){}
 
-    constructor(email, cpf, passowrd){
+    async createUser(name, email, cpf, passowrd){
         this.id = generatorId();
         this.hashPass = encriptyPassword(passowrd);
-        this.user = new UserModel(this.id, email, cpf, this.hashPass);
-        postUser(this.user);
-        return {
-            id: this.user.id,
-            email: this.user.email,
-            cpf: this.user.cpf
-        };
+        this.user = await UserModel.create({
+            id: this.id, 
+            name, 
+            email, 
+            password_hash: this.hashPass, 
+            cpf
+        });
+        return this.user
     }
 }
 
-module.exports = createUserService;
+export default createUserService;

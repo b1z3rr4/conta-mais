@@ -1,4 +1,4 @@
-const { deleteUsers, getUsers } = require('../../models/UserModel.js');
+import { deleteUsers, getUsers } from '../../models/UserModel.js';
 
 class deleteUserService {
     data;
@@ -17,4 +17,4 @@ class deleteUserService {
     }
 }
 
-module.exports = deleteUserService;
+export default deleteUserService;

@@ -1,4 +1,4 @@
-const { getUsers } = require('../../models/UserModel.js');
+import { getUsers } from '../../models/UserModel.js';
 
 class listUserService {
     constructor(id){
@@ -10,4 +10,4 @@ class listUserService {
     }
 }
 
-module.exports = listUserService;
+export default listUserService;

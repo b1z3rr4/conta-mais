@@ -1,4 +1,4 @@
-const { getUsers } = require('../models/UserModel.js');
+import { getUsers } from '../models/UserModel.js';
 
 function idValidator(req, res, next){
     const { id } = req.params;
@@ -14,4 +14,4 @@ function idValidator(req, res, next){
     next();
 }
 
-module.exports = idValidator;
+export default idValidator;

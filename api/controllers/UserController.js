@@ -1,7 +1,7 @@
-const createUserService = require('../services/user/createUser.service.js');
-const updateUserService = require('../services/user/updateUser.service.js');
-const deleteUserService = require('../services/user/deleteUser.service.js');
-const listUserService = require('../services/user/listUser.service.js');
+import createUserService from '../services/user/createUser.service.js';
+import updateUserService from '../services/user/updateUser.service.js';
+import deleteUserService from '../services/user/deleteUser.service.js';
+import listUserService from '../services/user/listUser.service.js';
 
 class UserController {
     constructor(){}
@@ -11,10 +11,13 @@ class UserController {
         const user = new listUserService(id);
         res.send(user);
     }
-
-    postUser(req, res){
-        const { email, cpf, password } = req.body;
-        const user = new createUserService(email, cpf, password);
+    //unica rota conectada com o banco é essa
+    async postUser(req, res){
+        //tem que pedir o nome
+        const { name, email, cpf, password } = req.body;
+        //se der merda, tem que mexer aqui
+        const controller = new createUserService()
+        const user = await controller.createUser(name, email, cpf, password);
         res.send(user);
     }
     
@@ -36,4 +39,4 @@ class UserController {
     }
 }
 
-module.exports = new UserController();
+export default new UserController();

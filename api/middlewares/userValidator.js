@@ -1,5 +1,5 @@
-const yup = require('yup');
-const cpfValidator = require('./cpfValidator.js');
+import * as yup from 'yup';
+import cpfValidator from './cpfValidator.js';
 class userValidator {
     constructor(){}
 
@@ -76,4 +76,4 @@ class userValidator {
     }
 }
 
-module.exports = new userValidator();
+export default new userValidator();
