@@ -5,35 +5,44 @@ import listUserService from '../services/user/listUser.service.js';
 
 class UserController {
     constructor(){}
-
-    getUser(req, res){
-        const { id } = req.params;
-        const user = new listUserService(id);
-        res.send(user);
+    
+    async getUser(req, res){
+        const { id } = req.query;
+        const services =  new listUserService();
+        let users;
+        if(id){
+            users = await services.listUsers(id);
+        } else {
+            users = await services.listUsers();
+        }
+        res.status(users.status).json(users.message);
     }
     
     async postUser(req, res){
         const { name, email, cpf, password } = req.body;
         const services = new createUserService()
         const user = await services.createUser(name, email, cpf, password);
-        res.send(user);
+        res.status(user.status).json(user.message);
     }
     
-    putUser(req, res){
+    async putUser(req, res){
         const { id } = req.params;
-        const { email, cpf } = req.body;
+        const { name, email, cpf } = req.body;
         const params = {
+            name,
             email,
             cpf
         }
-        const user = new updateUserService(id, params);
-        res.send(user);
+        const services = new updateUserService()
+        const user = await services.updateUser(id, params);
+        res.status(user.status).json(user.message);
     }
-
-    deleteUser(req, res){
+    
+    async deleteUser(req, res){
         const { id } = req.params;
-        const user = new deleteUserService(id);
-        res.send(user);
+        const services = new deleteUserService()
+        const user = await services.deleteUser(id);
+        res.status(user.status).json(user.message);
     }
 }
 

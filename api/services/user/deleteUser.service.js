@@ -1,19 +1,23 @@
-import { deleteUsers, getUsers } from '../../models/UserModel.js';
+import userRepository from "../../repositories/userRepository.js";
 
 class deleteUserService {
-    data;
-    newData;
-    actDelete;
 
-    constructor(id){
-        this.data = getUsers();
-        this.newData = this.data.filter((item) => {
-            return item.id !== id;
-        });
-        this.actDelete = deleteUsers(this.newData);
-        return {
-            status: "sucess"
-        };
+    constructor(){}
+
+    async deleteUser(id){
+        this.repository = new userRepository();
+        this.user = await this.repository.delete(id);
+        if(this.user[0] === 1){
+            return {
+                status: 200,
+                message: "Deletado com sucesso!"
+            }
+        } else {
+            return {
+                status: 400,
+                message: "Não foi possível deletar o usuário"
+            }
+        }
     }
 }
 

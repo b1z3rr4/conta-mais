@@ -12,15 +12,34 @@ class userRepository {
     }
 
     async get(id){
-        //crud de pegar
+        if(id){
+            this.user = await UserModel.findAll({
+                where: {
+                    id: id
+                  }
+            }) 
+        } else {
+            this.user = await UserModel.findAll() 
+        }
+        return this.user;
     }
 
-    async update(id, data){
-        //crud de atualizar
+    async update(id, obj){
+        this.user = await UserModel.update( obj, {
+            where: {
+              id: id
+            }
+        })
+        return this.user;
     }
 
     async delete(id){
-        //crud de excluir
+        this.user = await UserModel.destroy({
+            where: {
+                id: id
+            }
+        })
+        return this.user;
     }
 }
 
