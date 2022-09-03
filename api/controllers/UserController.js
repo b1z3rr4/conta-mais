@@ -11,13 +11,11 @@ class UserController {
         const user = new listUserService(id);
         res.send(user);
     }
-    //unica rota conectada com o banco é essa
+    
     async postUser(req, res){
-        //tem que pedir o nome
         const { name, email, cpf, password } = req.body;
-        //se der merda, tem que mexer aqui
-        const controller = new createUserService()
-        const user = await controller.createUser(name, email, cpf, password);
+        const services = new createUserService()
+        const user = await services.createUser(name, email, cpf, password);
         res.send(user);
     }
     

@@ -1,24 +1,18 @@
 import encriptyPassword from "../../../utils/encriptyPassword.js";
 import generatorId from "../../../utils/generatorId.js";
-import UserModel from '../../models/UserModel.js';
+import userRepository from "../../repositories/userRepository.js";
 
 class createUserService {
     id;
     hashPass;
     user;
-    //se der merda mexe aqui
     constructor(){}
 
     async createUser(name, email, cpf, passowrd){
         this.id = generatorId();
         this.hashPass = encriptyPassword(passowrd);
-        this.user = await UserModel.create({
-            id: this.id, 
-            name, 
-            email, 
-            password_hash: this.hashPass, 
-            cpf
-        });
+        this.repository = new userRepository();
+        this.user = await this.repository.create(this.id, name, email, this.hashPass, cpf);
         return this.user
     }
 }
