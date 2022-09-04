@@ -10,7 +10,7 @@ class createBusinessService {
         try{
             this.business = await this.repository.create(id, cnpj, company, bank_stock);
             return {
-                status: 21,
+                status: 201,
                 message: this.business,
             }
         }   catch(e){

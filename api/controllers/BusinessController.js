@@ -25,6 +25,16 @@ class BusinessController {
         })
     }
 
+    async updateBusiness(req, res) {
+        const { id } = req.params;
+        const { cnpj, company, bank_stock } = req.body;
+        const service = new updateBusinessService();
+        const business = await service.updateBusiness(id, cnpj, company, bank_stock);
+        res.status(business.status).json({
+            message: business.message
+        })
+    }
+
     async deleteBusiness(req, res) {
         const { id } = req.params;
         const service = new deleteBusinessService();
