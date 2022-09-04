@@ -1,8 +1,6 @@
-const { Sequelize } = require("sequelize");
-const UserModel = require("../api/models/user/UserModel");
-const databaseConfig = require("../config/database");
+import { Sequelize } from "sequelize";
+import databaseConfig from "../config/database";
 
-const models = [UserModel];
 
 class Database {
   constructor() {
@@ -10,8 +8,8 @@ class Database {
   }
   init() {
     this.connection = new Sequelize(databaseConfig);
-    models.map((model) => model.init(this.connection));
+
   }
 }
 
-module.exports = Database;
+export default new Database().connection;

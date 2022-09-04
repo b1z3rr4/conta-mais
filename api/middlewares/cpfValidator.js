@@ -3,4 +3,4 @@ function cpfValidator(cpf){
     return regex.test(cpf);
 }
 
-module.exports = cpfValidator;
+export default cpfValidator;

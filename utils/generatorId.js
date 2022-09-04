@@ -1,8 +1,8 @@
-const uuidv4 = require('uuid');
+import {v4 as uuidv4 } from 'uuid';
 
 function generatorId(){
     const id = uuidv4();
     return id;
 }
 
-module.exports = generatorId;
+export default generatorId;
