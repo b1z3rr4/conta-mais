@@ -1,4 +1,5 @@
 import createBusinessService from '../services/business/createBusiness.service';
+import listBusinessService from '../services/business/listBusiness.service';
 
 class BusinessController {
     
@@ -12,6 +13,15 @@ class BusinessController {
             message: business.message
         })
 
+    }
+
+    async listBusiness(req, res) {
+        const { id } = req.query;
+        const service = new listBusinessService();
+        const business = await service.listBusiness(id);
+        res.status(business.status).json({
+            message: business.message
+        })
     }
 }
 
