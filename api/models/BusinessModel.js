@@ -28,7 +28,7 @@ BusinessModel.init(
   },
   {
     sequelize,
-    modelName: "business",
+    tableName: "business",
     timestamps: false,
   }
 );

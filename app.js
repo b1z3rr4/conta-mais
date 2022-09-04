@@ -29,6 +29,7 @@ class App {
     routes(){
         this.server.use(routes.routesAuth);
         this.server.use(routes.routesUser);
+        this.server.use(routes.routesBusiness);
     }
 }
 
