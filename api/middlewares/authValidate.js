@@ -2,7 +2,11 @@ import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 
 async function authValidate(req, res, next){
-    const authKey = req.headers['authKey'];
+    const authKey = req.headers['authorization'];
+    if(!authKey){
+        res.status(400).json({message: 'Not authorized'})
+        return;
+    }    
     const token = authKey.split(' ')[1]
     const secret = process.env.SECRET
     try{
