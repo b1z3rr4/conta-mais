@@ -28,6 +28,7 @@ BusinessModel.init(
     user_id: {
       type: Sequelize.UUID,
       allowNull: false
+
     }
   },
   {
