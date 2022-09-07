@@ -26,12 +26,12 @@ class App {
     this.server.use(express.json());
   }
 
-  routes() {
-    this.server.use(routes.routesAuth);
-    this.server.use(routes.routesBankAccount);
-    this.server.use(routes.routesUser);
-    this.server.use(routes.routesBusiness);
-  }
+    routes(){
+        this.server.use(routes.routesAuth);
+        this.server.use(routes.routesUser);
+        this.server.use(routes.routesBusiness);
+        this.server.use(routes.routesMoviments);
+    }
 }
 
 export default new App().server;
