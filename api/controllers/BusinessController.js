@@ -7,9 +7,9 @@ class BusinessController {
   constructor() {}
 
   async createBusiness(req, res) {
-    const { cnpj, company, bank_stock } = req.body;
+    const { cnpj, company, bank_stock, user_id } = req.body;
     const service = new createBusinessService();
-    const business = await service.createBusiness(cnpj, company, bank_stock);
+    const business = await service.createBusiness(cnpj, company, bank_stock, user_id);
     res.status(business.status).json({
       message: business.message,
     });
@@ -26,13 +26,14 @@ class BusinessController {
 
   async updateBusiness(req, res) {
     const { id } = req.params;
-    const { cnpj, company, bank_stock } = req.body;
+    const { cnpj, company, bank_stock, user_id } = req.body;
     const service = new updateBusinessService();
     const business = await service.updateBusiness(
       id,
       cnpj,
       company,
-      bank_stock
+      bank_stock,
+      user_id
     );
     res.status(business.status).json({
       message: business.message,

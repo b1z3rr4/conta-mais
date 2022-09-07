@@ -3,12 +3,13 @@ import MovimentsRepository from "../../repositories/movimentsRepository";
 class updateMovimentsService {
     constructor(){}
 
-    async updateMoviments(id, name, description, value, type){
+    async updateMoviments(id, name, description, value, type, id_bankAccount){
         const obj = {
             name, 
             description, 
             value,
-            type
+            type,
+            id_bankAccount
         }
         const repository = new MovimentsRepository();
         try{
