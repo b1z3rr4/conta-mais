@@ -27,6 +27,10 @@ MovimentModel.init(
     type: {
       type: Sequelize.STRING,
       allowNull: false,
+    },
+    id_bankAccount: {
+      type: Sequelize.STRING,
+      allowNull: false
     }
   },
   {

@@ -13,6 +13,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.removeColumn('business', 'id_user');
+    return queryInterface.removeColumn('business', 'user_id');
   }
 };
