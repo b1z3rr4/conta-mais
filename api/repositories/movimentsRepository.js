@@ -3,13 +3,14 @@ import MovimentModel from "../models/MovimentModel"
 class MovimentsRepository {
     constructor(){}
 
-    async create(id, name, description, value, type){
+    async create(id, name, description, value, type, id_bankAccount){
         this.moviment = await MovimentModel.create({
             id,
             name,
             description,
             value,
-            type
+            type,
+            id_bankAccount
         })
         return this.moviment;
     }
