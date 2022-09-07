@@ -4,7 +4,14 @@ import generatorId from "../../../utils/generatorId";
 class createBankAccountService {
   constructor() {}
 
-  async createBankAccount(agency, account, financial_institution, cash, limit) {
+  async createBankAccount(
+    agency,
+    account,
+    financial_institution,
+    cash,
+    limit,
+    business_id
+  ) {
     const id = generatorId();
     this.repository = new bankAccountRepository();
     try {
@@ -14,7 +21,8 @@ class createBankAccountService {
         account,
         financial_institution,
         cash,
-        limit
+        limit,
+        business_id
       );
       return {
         status: 201,

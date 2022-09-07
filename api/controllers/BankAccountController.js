@@ -7,14 +7,16 @@ class BankAccountController {
   constructor() {}
 
   async createBank(req, res) {
-    const { agency, account, financial_institution, cash, limit } = req.body;
+    const { agency, account, financial_institution, cash, limit, business_id } =
+      req.body;
     const service = new createBankAccountService();
     const bankAccount = await service.createBankAccount(
       agency,
       account,
       financial_institution,
       cash,
-      limit
+      limit,
+      business_id
     );
     res.status(bankAccount.status).json({
       message: bankAccount.message,
@@ -32,7 +34,8 @@ class BankAccountController {
 
   async updateBank(req, res) {
     const { id } = req.params;
-    const { agency, account, financial_institution, cash, limit } = req.body;
+    const { agency, account, financial_institution, cash, limit, business_id } =
+      req.body;
     const service = new updateBankAccountService();
     const bankAccount = await service.updateBankAccount(
       id,
@@ -40,7 +43,8 @@ class BankAccountController {
       account,
       financial_institution,
       cash,
-      limit
+      limit,
+      business_id
     );
     res.status(bankAccount.status).json({
       message: bankAccount.message,
