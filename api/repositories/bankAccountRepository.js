@@ -10,7 +10,7 @@ class bankAccountRepository {
     financial_institution,
     cash,
     limit,
-    business_id
+    id_business
   ) {
     this.bank = await BankAccountModel.create({
       id,
@@ -19,7 +19,7 @@ class bankAccountRepository {
       financial_institution,
       cash,
       limit,
-      business_id,
+      id_business,
     });
     return this.bank;
   }
