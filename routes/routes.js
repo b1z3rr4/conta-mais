@@ -1,13 +1,13 @@
 import routesUser from './user/userRoutes.js';
 import routesAuth from './auth/authRoutes.js';
 import routesBusiness from './business/businessRoutes.js';
-import routesInflows from './inflows/inflowsRoutes.js';
+import routesMoviments from './moviments/movimentsRoutes.js';
 
 const routes = {
     routesUser,
     routesAuth,
     routesBusiness,
-    routesInflows
+    routesMoviments
 };
 
 export default routes;

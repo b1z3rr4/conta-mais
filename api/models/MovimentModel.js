@@ -3,9 +3,9 @@ import databaseConfig from "../../config/database.js";
 
 const sequelize = new Sequelize(databaseConfig);
 
-class OutflowsModel extends Model {};
+class MovimentModel extends Model {};
 
-OutflowsModel.init(
+MovimentModel.init(
   {
     id: {
         type: Sequelize.UUID,
@@ -23,13 +23,17 @@ OutflowsModel.init(
     value: {
         type: Sequelize.FLOAT,
         allowNull: false
+    },
+    type: {
+      type: Sequelize.STRING,
+      allowNull: false,
     }
   },
   {
     sequelize,
-    tableName: "outflows",
+    tableName: "moviments",
     timestamps: false,
   }
 );
 
-export default OutflowsModel;
+export default MovimentModel;

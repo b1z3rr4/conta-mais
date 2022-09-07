@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('outflows', { 
+    return queryInterface.createTable('moviments', { 
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -20,11 +20,17 @@ module.exports = {
       value: {
           type: Sequelize.FLOAT,
           allowNull: false
+      },
+      type: {
+        type: Sequelize.STRING,
+        allowNull: false
       }
     });
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('outflows');
+    return queryInterface.dropTable('moviments');
   }
 };
+  
+  

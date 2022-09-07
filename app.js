@@ -30,7 +30,7 @@ class App {
         this.server.use(routes.routesAuth);
         this.server.use(routes.routesUser);
         this.server.use(routes.routesBusiness);
-        this.server.use(routes.routesInflows);
+        this.server.use(routes.routesMoviments);
     }
 }
 
