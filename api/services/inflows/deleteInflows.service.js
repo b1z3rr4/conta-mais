@@ -6,12 +6,13 @@ class deleteInflowsService{
     async deleteInflows(id){
         const repository = new InflowsRepository();
         try{
-            const inflow = repository.delete(id);
+            const inflow = await repository.delete(id);
             if(inflow[0] === 0){
                 return {
                     status: 200,
                     message: "Não foi possível deletar a entrada!"
                 }
+            }
             
             return{
                 status: 200,

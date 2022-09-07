@@ -8,7 +8,7 @@ class createInflowsService {
         const id = generatorId()
         const repository = new InflowsRepository();
         try{
-            const inflow = repository.create(id, name, description, value);
+            const inflow = await repository.create(id, name, description, value);
             return{
                 status: 200,
                 message: inflow

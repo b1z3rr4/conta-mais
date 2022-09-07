@@ -7,7 +7,7 @@ class listInflowsService {
         const repository = new InflowsRepository();
         if(id){
             try{
-                const inflow = repository.get(id);
+                const inflow = await repository.get(id);
                 return {
                     status: 200,
                     message: inflow
@@ -22,7 +22,7 @@ class listInflowsService {
 
         } else{
             try{
-                const inflows = repository.get();
+                const inflows = await repository.get();
                 return {
                     status: 200,
                     message: inflows

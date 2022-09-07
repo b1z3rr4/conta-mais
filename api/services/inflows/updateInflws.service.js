@@ -3,10 +3,15 @@ import InflowsRepository from "../../repositories/inflowsRepository";
 class updateInflowsService {
     constructor(){}
 
-    async updateInflows(id, obj){
+    async updateInflows(id, name, description, value){
+        const obj = {
+            name, 
+            description, 
+            value
+        }
         const repository = new InflowsRepository();
         try{
-            const inflow = repository.update(id, obj);
+            const inflow = await repository.update(id, obj);
             if(inflow[0] === 0){
                 return {
                     status: 200,
