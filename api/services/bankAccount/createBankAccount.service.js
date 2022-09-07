@@ -9,7 +9,8 @@ class createBankAccountService {
     account,
     financial_institution,
     cash,
-    limit
+    limit,
+    business_id
   ) {
     const id = generatorId();
     this.repository = new bankAccountRepository();
@@ -20,7 +21,8 @@ class createBankAccountService {
         account,
         financial_institution,
         cash,
-        limit
+        limit,
+        business_id
       );
       return {
         status: 201,

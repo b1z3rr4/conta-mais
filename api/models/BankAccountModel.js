@@ -33,6 +33,10 @@ BankAccountModel.init(
       type: Sequelize.FLOAT,
       allowNull: true,
     },
+    id_business: {
+      type: Sequelize.UUID,
+      allowNull: false,
+    },
   },
   {
     sequelize,
