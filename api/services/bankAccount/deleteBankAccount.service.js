@@ -6,7 +6,7 @@ class deleteBankAccountService {
   async deleteBankAccount(id) {
     this.bank = new bankAccountRepository();
     try {
-      this.bank = await this.repository.delete(id);
+      this.bank = await this.bank.delete(id);
       return {
         status: 200,
         message: "Deletado com sucesso!",
