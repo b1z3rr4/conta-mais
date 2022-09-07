@@ -4,10 +4,10 @@ import { Router } from "express";
 
 const routesMoviments = Router();
 
-routesMoviments.get("/moviments", MovimentsController.getMoviment);
-routesMoviments.post("/moviments", MovimentsController.postMoviment);
-routesMoviments.put("/moviments", MovimentsController.putMoviment);
-routesMoviments.delete("/moviments", MovimentsController.deleteMoviment);
+routesMoviments.get("/moviments", authValidate, MovimentsController.getMoviment);
+routesMoviments.post("/moviments", authValidate, MovimentsController.postMoviment);
+routesMoviments.put("/moviments", authValidate, MovimentsController.putMoviment);
+routesMoviments.delete("/moviments", authValidate, MovimentsController.deleteMoviment);
 
 export default routesMoviments;
 
