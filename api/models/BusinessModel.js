@@ -24,6 +24,10 @@ BusinessModel.init(
     bank_stock: {
       type: Sequelize.FLOAT,
       allowNull: false,
+    },
+    user_id: {
+      type: Sequelize.UUID,
+      allowNull: false
     }
   },
   {

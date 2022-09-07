@@ -5,7 +5,6 @@ class createBankAccountService {
   constructor() {}
 
   async createBankAccount(
-    id,
     agency,
     account,
     financial_institution,

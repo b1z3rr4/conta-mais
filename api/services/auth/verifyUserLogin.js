@@ -1,5 +1,5 @@
 import userRepository from "../../repositories/userRepository.js";
-import encriptyPassword from '../../../utils/encriptyPassword';
+import encriptyPassword from '../../../utils/encriptyPassword.js';
 
 class verifyUserLogin {
     
