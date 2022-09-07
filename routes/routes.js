@@ -10,6 +10,5 @@ const routes = {
     routesBusiness,
     routesMoviments,
     routesBankAccout
-};
 
 export default routes;
