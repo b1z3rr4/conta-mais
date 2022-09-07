@@ -25,9 +25,10 @@ BusinessModel.init(
       type: Sequelize.FLOAT,
       allowNull: false,
     },
-    id_bankAccount: {
-    type: Sequelize.UUID,
-    allowNull: false,
+    user_id: {
+      type: Sequelize.UUID,
+      allowNull: false
+
     }
   },
   {
