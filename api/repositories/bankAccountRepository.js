@@ -3,10 +3,10 @@ import BankAccountModel from "../models/BankAccountModel";
 class bankAccountRepository {
   constructor() {}
 
-  async create(id, angency, account, financial_institution, cash, limit) {
+  async create(id, agency, account, financial_institution, cash, limit) {
     this.bank = await BankAccountModel.create({
       id,
-      angency,
+      agency,
       account,
       financial_institution,
       cash,
