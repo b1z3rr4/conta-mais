@@ -1,4 +1,4 @@
-import BusinessRepository from '../../repositories/businessRepository';
+import BusinessRepository from '../../repositories/businessRepository.js';
 
 class listBusinessService {
     constructor(){}

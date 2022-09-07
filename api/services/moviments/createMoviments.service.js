@@ -4,11 +4,11 @@ import generatorId from "../../../utils/generatorId";
 class createMovimentsService {
     constructor(){}
 
-    async createMoviments(name, description, value, type){
+    async createMoviments(name, description, value, type, id_bankAccount){
         const id = generatorId()
         const repository = new MovimentsRepository();
         try{
-            const moviment = await repository.create(id, name, description, value, type);
+            const moviment = await repository.create(id, name, description, value, type, id_bankAccount);
             return{
                 status: 200,
                 message: moviment
