@@ -8,7 +8,8 @@ class businessRepository {
             id,
             cnpj,
             company,
-            bank_stock
+            bank_stock,
+            id_bankAccount
         })
         return this.business;
     }

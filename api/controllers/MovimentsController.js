@@ -16,9 +16,9 @@ class MovimentsController {
     }
 
     async postMoviment(req, res){
-        const { name, description, value, type } = req.body;
+        const { name, description, value, type, id_bankAccount } = req.body;
         const service = new createMovimentsService();
-        const moviment = await service.createMoviments( name, description, value, type);
+        const moviment = await service.createMoviments( name, description, value, type, id_bankAccount);
         res.status(moviment.status).json({
             message: moviment.message
         })
@@ -29,7 +29,7 @@ class MovimentsController {
         const { name, description, value, type } = req.body;
         const { id } = req.params;
         const service = new updateMovimentsService();
-        const moviment = await service.updateMoviments( id, name, description, value, type);
+        const moviment = await service.updateMoviments( id, name, description, value, type, id_bankAccount);
         res.status(moviment.status).json({
             message: moviment.message
         })
