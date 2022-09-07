@@ -1,29 +1,32 @@
 import InflowsRepository from "../../repositories/inflowsRepository";
 
-class deleteInflowsService{
+class updateInflowsService {
     constructor(){}
 
-    async deleteInflows(id){
+    async updateInflows(id, obj){
         const repository = new InflowsRepository();
         try{
-            const inflow = repository.delete(id);
+            const inflow = repository.update(id, obj);
             if(inflow[0] === 0){
                 return {
                     status: 200,
-                    message: "Não foi possível deletar a entrada!"
+                    message: "Não foi possível atualizar a entrada!"
                 }
-            
-            return{
+                
+            }
+            return {
                 status: 200,
-                message: "Deletado com sucesso!"
+                message: "Atualizado com sucesso!"
             }
         } catch(e){
             console.log(e);
             return{
                 status: 400,
-                message: "Não foi possível dleetar a entrada!"
+                message: "Não foi possível atualizar a entrada"
             }
         }
     }
+
 }
- export default deleteInflowsService;
+
+export default updateInflowsService;
