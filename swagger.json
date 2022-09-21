@@ -170,7 +170,7 @@
                 }
               }
             }
-          },
+        },
         "/business": {
             "post": {
                 "tags": ["Business"],
@@ -213,7 +213,6 @@
                 }
             }
         },
-
         "/business/list": {
             "get": {
                 "tags": ["Business"],
@@ -290,6 +289,274 @@
                 "responses": {
                     "201": {
                         "description": "Empresa deletada com sucesso!"
+                    }
+                }
+            }
+        },
+        "/bank": {
+            "post": {
+                "tags": ["BankAccount"],
+                "security": [{"bearerAuth": []}],
+                "sumary": "Cadastra uma conta bancária",
+                "description": "Esta rota é responsável por cadastrar contas bancárias",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "agency": {
+                                        "type": "number"
+                                    },
+                                    "account": {
+                                        "type": "number"
+                                    },
+                                    "financial_institution": {
+                                        "type": "string"
+                                    },
+                                    "cash": {
+                                        "type": "number"    
+                                    },
+                                    "limit": {
+                                        "type": "number"    
+                                    },
+                                    "id_business": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "agency": 1234,
+	                                "account": 12345,
+	                                "financial_institution": "nomeBanco",
+	                                "cash": 5000,
+	                                "limit": 1000,
+	                                "id_business": "efcd6d29-d0a1-432b-a149-3c5da22c7c1d" 
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Conta bancária cadastrada com sucesso!"
+                    }
+                }
+            }
+        },
+        "/bank/list": {
+            "get": {
+                "tags": ["BankAccount"],
+                "security": [{"bearerAuth": []}],
+                "sumary": " Lista as contas cadastradas",
+                "description": "Esta rota é reponsável por listar as contas cadastradas",
+                "responses": {
+                    "201": {
+                        "description": "Lista de contas encontrada!"
+                    }
+                }
+            }
+        },
+        "/updateBank/{id}": {
+            "put": {
+                "tags": ["BankAccount"],
+                "security": [{"bearerAuth": []}],
+                "sumary": "Atualiza uma conta",
+                "description": "Esta rota é responsável por atualizar dados de uma conta",
+                "parameters": [
+                    {
+                        "in":"path",
+                        "name": "id",
+                        "description": "Id da conta que será atualizada",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "agency": {
+                                        "type": "number"
+                                    },
+                                    "account": {
+                                        "type": "number"
+                                    },
+                                    "financial_institution": {
+                                        "type": "string"
+                                    },
+                                    "cash": {
+                                        "type": "number"    
+                                    },
+                                    "limit": {
+                                        "type": "number"    
+                                    }
+                                },
+                                "example": {
+                                    "agency": 1234,
+	                                "account": 12345,
+	                                "financial_institution": "nomeBanco",
+	                                "cash": 5000,
+	                                "limit": 1000
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Conta atualizado com sucesso!"
+                    }
+                }
+            }
+        },
+        "/deleteBank/{id}": {
+            "delete": {
+                "tags": ["BankAccount"],
+                "security": [{"bearerAuth": []}],
+                "sumary": "Deleta uma conta",
+                "description": "Esta rota é responsável por deletar dados de uma conta",
+                "parameters": [
+                    {
+                        "in":"path",
+                        "name": "id",
+                        "description": "Id da conta que será deletada",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Conta deletada com sucesso!"
+                    }
+                }
+            }
+        },
+        "/moviments": {
+            "post": {
+                "tags": ["Moviments"],
+                "security": [{"bearerAuth": []}],
+                "sumary": "Cadastra uma movimentação bancária",
+                "description": "Esta rota é responsável por cadastrar movimentações bancárias",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "number"
+                                    },
+                                    "type": {
+                                        "type": "string"    
+                                    },
+                                    "id_bankAccount": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Pagamento funcionário",
+	                                "description": "Banco Itau",
+	                                "value": 2000,
+	                                "type": "Saida",
+	                                "id_bankAccount": "c68e87b4-cd5d-4fd2-bad5-cb9e9388ee2a"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Movimentação cadastrada com sucesso!"
+                    }
+                }
+            }
+        },
+        "/moviments/list": {
+            "get": {
+                "tags": ["Moviments"],
+                "security": [{"bearerAuth": []}],
+                "sumary": " Lista as movimentações financeiras",
+                "description": "Esta rota é reponsável por listar as movimentações financeiras",
+                "responses": {
+                    "201": {
+                        "description": "Lista de movimentações encontrada!"
+                    }
+                }
+            }
+        },
+        "/updateMoviments/{id}": {
+            "put": {
+                "tags": ["Moviments"],
+                "security": [{"bearerAuth": []}],
+                "sumary": "Atualiza uma movimentação",
+                "description": "Esta rota é responsável por atualizar uma movimentação",
+                "parameters": [
+                    {
+                        "in":"path",
+                        "name": "id",
+                        "description": "Id da movimentação que será atualizada",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "number"
+                                    },
+                                    "type": {
+                                        "type": "string"    
+                                    }
+                                },
+                                "example": {
+                                    "name": "Pagamento funcionário",
+	                                "description": "Banco Itau",
+	                                "value": 2000,
+	                                "type": "Saida"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Conta atualizado com sucesso!"
+                    }
+                }
+            }
+        },
+        "/deleteMoviments/{id}": {
+            "delete": {
+                "tags": ["Moviments"],
+                "security": [{"bearerAuth": []}],
+                "sumary": "Deleta uma movimentação",
+                "description": "Esta rota é responsável por deletar uma movimentação financeira",
+                "parameters": [
+                    {
+                        "in":"path",
+                        "name": "id",
+                        "description": "Id da movimentação que será deletada",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Movimentação deletada com sucesso!"
                     }
                 }
             }

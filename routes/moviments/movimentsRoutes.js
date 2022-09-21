@@ -5,10 +5,10 @@ import movimentsValidator from "../../api/middlewares/movimentsValidator";
 
 const routesMoviments = Router();
 
-routesMoviments.get("/moviments", authValidate, movimentsValidator.getValidator, MovimentsController.getMoviment);
+routesMoviments.get("/moviments/list", authValidate, movimentsValidator.getValidator, MovimentsController.getMoviment);
 routesMoviments.post("/moviments", authValidate, movimentsValidator.postValidator, MovimentsController.postMoviment);
-routesMoviments.put("/moviments", authValidate, movimentsValidator.putValidator, MovimentsController.putMoviment);
-routesMoviments.delete("/moviments", authValidate, movimentsValidator.deleteValidator, MovimentsController.deleteMoviment);
+routesMoviments.put("/updateMoviments/:id", authValidate, movimentsValidator.putValidator, MovimentsController.putMoviment);
+routesMoviments.delete("/deleteMoviments/:id", authValidate, movimentsValidator.deleteValidator, MovimentsController.deleteMoviment);
 
 export default routesMoviments;
 
