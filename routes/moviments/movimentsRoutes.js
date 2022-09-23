@@ -1,14 +1,13 @@
 import MovimentsController from "../../api/controllers/MovimentsController";
-import authValidate from "../../api/middlewares/authValidate";
+import authValidator from "../../api/middlewares/authValidator";
 import { Router } from "express";
 import movimentsValidator from "../../api/middlewares/movimentsValidator";
 
 const routesMoviments = Router();
 
-routesMoviments.get("/moviments/list", authValidate, movimentsValidator.getValidator, MovimentsController.getMoviment);
-routesMoviments.post("/moviments", authValidate, movimentsValidator.postValidator, MovimentsController.postMoviment);
-routesMoviments.put("/moviments/update/:id", authValidate, movimentsValidator.putValidator, MovimentsController.putMoviment);
-routesMoviments.delete("/moviments/delete/:id", authValidate, movimentsValidator.deleteValidator, MovimentsController.deleteMoviment);
+routesMoviments.get("/moviments/list", authValidator, movimentsValidator.getValidator, MovimentsController.getMoviment);
+routesMoviments.post("/moviments", authValidator, movimentsValidator.postValidator, MovimentsController.postMoviment);
+routesMoviments.put("/moviments/update/:id", authValidator, movimentsValidator.putValidator, MovimentsController.putMoviment);
+routesMoviments.delete("/moviments/delete/:id", authValidator, movimentsValidator.deleteValidator, MovimentsController.deleteMoviment);
 
 export default routesMoviments;
-
