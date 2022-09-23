@@ -12,7 +12,7 @@ class AuthController {
         const user = await services.verifyUser(email, password);
         if(user){
             token = await generateToken(email)
-            res.json(token);
+            res.status(200).json({token});
             return
         }
         res.status(400).json({
