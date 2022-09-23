@@ -7,7 +7,7 @@ const routesBusiness = Router();
 
 routesBusiness.get('/business/list', authValidate, businessValidator.getValidator, BusinessController.listBusiness);
 routesBusiness.post('/business', authValidate, businessValidator.postValidator, BusinessController.createBusiness);
-routesBusiness.put('/updateBusiness/:id', authValidate, businessValidator.putValidator, BusinessController.updateBusiness);
-routesBusiness.delete('/deleteBusiness/:id', authValidate, businessValidator.deleteValidator, BusinessController.deleteBusiness);
+routesBusiness.put('/business/update/:id', authValidate, businessValidator.putValidator, BusinessController.updateBusiness);
+routesBusiness.delete('/business/delete/:id', authValidate, businessValidator.deleteValidator, BusinessController.deleteBusiness);
 
 export default routesBusiness;

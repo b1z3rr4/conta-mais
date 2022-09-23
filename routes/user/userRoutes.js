@@ -6,7 +6,7 @@ const routesUser = Router();
 
 routesUser.get('/user/list', userValidator.getValidator, UserController.getUser);
 routesUser.post('/user', userValidator.postValidator, UserController.postUser);
-routesUser.put('/updateUser/:id', userValidator.putValidator, UserController.putUser);
-routesUser.delete('/deleteUser/:id', userValidator.deleteValidator, UserController.deleteUser);
+routesUser.put('/user/update/:id', userValidator.putValidator, UserController.putUser);
+routesUser.delete('/user/delete/:id', userValidator.deleteValidator, UserController.deleteUser);
 
 export default routesUser;

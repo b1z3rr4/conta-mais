@@ -7,7 +7,7 @@ const routesBankAccount = Router();
 
 routesBankAccount.get("/bank/list", authValidate, bankAccountValidator.getValidator, BankAccountController.listBank);
 routesBankAccount.post("/bank", authValidate, bankAccountValidator.postValidator, BankAccountController.createBank);
-routesBankAccount.put("/updateBank/:id", authValidate, bankAccountValidator.putValidator, BankAccountController.updateBank);
-routesBankAccount.delete("/deleteBank/:id", authValidate, bankAccountValidator.deleteValidator, BankAccountController.deleteBank);
+routesBankAccount.put("/bank/update/:id", authValidate, bankAccountValidator.putValidator, BankAccountController.updateBank);
+routesBankAccount.delete("/bank/delete/:id", authValidate, bankAccountValidator.deleteValidator, BankAccountController.deleteBank);
 
 export default routesBankAccount;
