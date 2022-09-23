@@ -148,15 +148,7 @@
               },
               "responses": {
                 "200": {
-                  "description": "Login realizado com sucesso",
-                  "content": {
-                    "application/json": {
-                      "schema": {
-                        "type": "object",
-                        "$ref": "#/components/schemas/session-response"
-                      }
-                    }
-                  }
+                  "description": "Login realizado com sucesso"
                 },
                 "400": {
                   "description": "Dados inválidos / Usuário não encontrado",
@@ -569,6 +561,15 @@
               "scheme": "bearer",
               "bearerFormat": "JWT"
             }
+        },
+        "schemas": {
+            "session-request": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string" },
+                  "password": { "type": "string" }
+                }
+              }
         }
     }
     
