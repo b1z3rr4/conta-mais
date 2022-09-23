@@ -4,11 +4,11 @@ import generatorId from "../../../utils/generatorId";
 class createBusinessService {
     constructor(){}
 
-    async createBusiness(cnpj, company, bank_stock){
+    async createBusiness(cnpj, company, bank_stock, user_id){
         const id = generatorId();
         this.repository = new BusinessRepository();
         try{
-            this.business = await this.repository.create(id, cnpj, company, bank_stock);
+            this.business = await this.repository.create(id, cnpj, company, bank_stock, user_id);
             return {
                 status: 201,
                 message: this.business,

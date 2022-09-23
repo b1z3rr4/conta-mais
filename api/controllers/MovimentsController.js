@@ -26,7 +26,7 @@ class MovimentsController {
     }
 
     async putMoviment(req, res){
-        const { name, description, value, type } = req.body;
+        const { name, description, value, type, id_bankAccount } = req.body;
         const { id } = req.params;
         const service = new updateMovimentsService();
         const moviment = await service.updateMoviments( id, name, description, value, type, id_bankAccount);

@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import jwt from 'jsonwebtoken';
-import userRepository from '../../repositories/userRepository';
+import userRepository from '../../repositories/userRepository.js';
 
 async function generateToken(email){
     const repository = new userRepository();

@@ -28,6 +28,7 @@ class App {
 
     routes(){
         this.server.use(routes.routesAuth);
+        this.server.use(routes.routesBankAccout);
         this.server.use(routes.routesUser);
         this.server.use(routes.routesBusiness);
         this.server.use(routes.routesMoviments);

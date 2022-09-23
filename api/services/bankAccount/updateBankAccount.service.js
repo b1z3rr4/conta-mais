@@ -9,7 +9,8 @@ class updateBankAccountService {
     account,
     financial_institution,
     cash,
-    limit
+    limit,
+    id_business
   ) {
     this.repository = new bankAccountRepository();
     const obj = {
@@ -18,6 +19,7 @@ class updateBankAccountService {
       financial_institution,
       cash,
       limit,
+      id_business,
     };
     try {
       this.bank = await this.repository.update(id, obj);
