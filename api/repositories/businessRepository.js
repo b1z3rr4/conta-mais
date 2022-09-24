@@ -3,12 +3,11 @@ import BusinessModel from "../models/BusinessModel";
 class businessRepository {
     constructor(){}
 
-    async create(id, cnpj, company, bank_stock, user_id){
+    async create(id, cnpj, company, user_id){
         this.business = await BusinessModel.create({
             id,
             cnpj,
             company,
-            bank_stock,
             user_id
         })
         return this.business;
