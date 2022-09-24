@@ -1,10 +1,13 @@
 import crypto from 'crypto';
-//import 'dotenv/config';
 
-function encriptyPassword(password){
+class encripty{
+    constructor() {}
+    encriptyPassword(password){
     const salt = process.env.SALT;
     const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
     return hash;
-}
+    }
 
-export default encriptyPassword;
+} 
+
+export default new encripty().encriptyPassword;
