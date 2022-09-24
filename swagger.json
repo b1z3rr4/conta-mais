@@ -181,9 +181,6 @@
                                     "company": {
                                         "type": "string"
                                     },
-                                    "bank_stock": {
-                                        "type": "number"
-                                    },
                                     "user_id": {
                                         "type": "string"    
                                     }
@@ -250,8 +247,7 @@
                                 },
                                 "example": {
                                     "cnpj": "90888777000100",
-                                    "company": "Softwares S.A",
-                                    "bank_stock": 1000 
+                                    "company": "Softwares S.A"
                                 }
                             }
                         }
@@ -297,12 +293,6 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "agency": {
-                                        "type": "number"
-                                    },
-                                    "account": {
-                                        "type": "number"
-                                    },
                                     "financial_institution": {
                                         "type": "string"
                                     },
@@ -317,8 +307,6 @@
                                     }
                                 },
                                 "example": {
-                                    "agency": 1234,
-	                                "account": 12345,
 	                                "financial_institution": "nomeBanco",
 	                                "cash": 5000,
 	                                "limit": 1000,
