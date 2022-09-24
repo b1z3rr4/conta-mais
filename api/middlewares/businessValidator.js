@@ -12,7 +12,6 @@ class businessValidator {
                 'CNPJ inválido!',
                 (cnpj) => cnpjValidator(cnpj)),
             company: yup.string().strict(),
-            bank_stock: yup.number().strict(),
             user_id: yup.string().strict()
         });
 
@@ -38,7 +37,6 @@ class businessValidator {
                 'CNPJ inválido!',
                 (cnpj) => cnpjValidator(cnpj)),
             company: yup.string().strict(),
-            bank_stock: yup.number().strict(),
             user_id: yup.string().strict()
         });
 
