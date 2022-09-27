@@ -14,7 +14,7 @@ class token{
                 email: user[0].email,
                 cpf: user[0].cpf
             }, secret, {
-                expiresIn: '1h'
+                expiresIn: '1d'
             })
             return token
         } catch (e){

@@ -12,7 +12,7 @@ class updateBusinessService {
     };
     try {
       this.business = await this.repository.update(id, obj);
-      if (this.business[0] === 1) {
+      if (this.business === undefined) {
         return {
           status: 200,
           message: "Empresa atualizada!",

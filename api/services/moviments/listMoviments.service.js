@@ -1,10 +1,12 @@
 import MovimentsRepository from "../../repositories/movimentsRepository";
+import SearchById from '../../repositories/searchByIdTokenRepository.js';
 
 class listMovimentsService {
     constructor(){}
 
-    async listMoviments(id){
+    async listMoviments(idToken, id){
         const repository = new MovimentsRepository();
+        const repositorySearch = new SearchById();
         if(id){
             try{
                 const moviment = await repository.get(id);
@@ -19,15 +21,13 @@ class listMovimentsService {
                     message: "Não foi possível buscar as movimentações!"
                 }
             }
-
         } else{
             try{
-                const moviment = await repository.get();
+                const moviments = await repositorySearch.searchMovimentsByBankUserId(idToken);
                 return {
                     status: 200,
                     message: moviments
                 }
-
             } catch(e){
                 console.log(e);
                 return {
@@ -35,8 +35,6 @@ class listMovimentsService {
                     message: "Não foi possível buscar as movimentações !"
                 }
             }
-
-
         }
     }
 }

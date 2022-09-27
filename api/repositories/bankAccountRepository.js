@@ -5,8 +5,6 @@ class bankAccountRepository {
 
   async create(
     id,
-    agency,
-    account,
     financial_institution,
     cash,
     limit,
@@ -14,8 +12,6 @@ class bankAccountRepository {
   ) {
     this.bank = await BankAccountModel.create({
       id,
-      agency,
-      account,
       financial_institution,
       cash,
       limit,

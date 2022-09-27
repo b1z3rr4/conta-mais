@@ -1,13 +1,15 @@
 import BusinessRepository from '../../repositories/businessRepository.js';
+import SearchById from '../../repositories/searchByIdTokenRepository.js';
 
 class listBusinessService {
     constructor(){}
 
-    async listBusiness(id){
-        this.repository = new BusinessRepository();
+    async listBusiness(idToken, id){
+        this.repositoryBusiness = new BusinessRepository();
+        this.repositorySearch = new SearchById();
         if(id){
             try{
-                this.business = await this.repository.get(id);
+                this.business = await this.repositoryBusiness.get(id);
                 return {
                     status: 200,
                     message: this.business
@@ -21,7 +23,7 @@ class listBusinessService {
             }
         } else {
             try{
-                this.business = await this.repository.get();
+                this.business = await this.repositorySearch.searchBusinessByUserId(idToken);
                 return {
                     status: 200,
                     message: this.business
