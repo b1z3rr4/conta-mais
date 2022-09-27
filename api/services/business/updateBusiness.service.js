@@ -3,17 +3,16 @@ import BusinessRepository from "../../repositories/businessRepository";
 class updateBusinessService {
   constructor() {}
 
-  async updateBusiness(id, cnpj, company, bank_stock, user_id) {
+  async updateBusiness(id, cnpj, company, user_id) {
     this.repository = new BusinessRepository();
     const obj = {
       cnpj,
       company,
-      bank_stock,
       user_id
     };
     try {
       this.business = await this.repository.update(id, obj);
-      if (this.business[0] === 1) {
+      if (this.business === undefined) {
         return {
           status: 200,
           message: "Empresa atualizada!",

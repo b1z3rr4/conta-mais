@@ -4,18 +4,22 @@ import movimentsInCash from "../cashFlow/movimentsInCash.service";
 class updateMovimentsService {
     constructor(){}
 
-    async updateMoviments(id, name, description, value, type, id_bankAccount){
+    async updateMoviments(id, name, description, value, type){
         const obj = {
-            name, 
-            description, 
+            name,
+            description,
             value,
-            type,
-            id_bankAccount
+            type
         }
         const repository = new MovimentsRepository();
-        const moviments = new movimentsInCash().define;
-        const proceed = await moviments(value, type, id_bankAccount);
-        if(proceed){
+        const moviment = new movimentsInCash();
+        const result = await moviment.updateCashInFlow(id, {
+            name: name,
+            description: description,
+            value: value,
+            type: type
+        })
+        if(result){
             try{
                 const moviment = await repository.update(id, obj);
                 if(moviment[0] === 0){
@@ -39,7 +43,7 @@ class updateMovimentsService {
         } else {
             return {
                 status: 400,
-                message: "Movimento não foi atualizado por falta de saldo! Verifique o limite da sua conta"
+                message: "Não foi possível atualizar a movimentação."
             }
         }
     }

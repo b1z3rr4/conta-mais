@@ -7,7 +7,7 @@ class deleteUserService {
     async deleteUser(id){
         this.repository = new userRepository();
         this.user = await this.repository.delete(id);
-        if(this.user[0] === 1){
+        if(this.user === 1){
             return {
                 status: 200,
                 message: "Deletado com sucesso!"

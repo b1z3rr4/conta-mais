@@ -3,13 +3,13 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.removeColumn(
-        'bankAccount',
-        'account',
+        'business',
+        'cash_flow',
         )
   },
   
   down: (queryInterface, Sequelize) => {
     return 
-      queryInterface.removeColumn('bankAccount', 'account')
+      queryInterface.removeColumn('business', 'cash_flow')
   }
-}
+};

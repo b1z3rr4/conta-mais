@@ -5,8 +5,6 @@ class updateBankAccountService {
 
   async updateBankAccount(
     id,
-    agency,
-    account,
     financial_institution,
     cash,
     limit,
@@ -14,8 +12,6 @@ class updateBankAccountService {
   ) {
     this.repository = new bankAccountRepository();
     const obj = {
-      agency,
-      account,
       financial_institution,
       cash,
       limit,

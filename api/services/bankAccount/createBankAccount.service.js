@@ -5,8 +5,6 @@ class createBankAccountService {
   constructor() {}
 
   async createBankAccount(
-    agency,
-    account,
     financial_institution,
     cash,
     limit,
@@ -17,8 +15,6 @@ class createBankAccountService {
     try {
       this.bank = await this.repository.create(
         id,
-        agency,
-        account,
         financial_institution,
         cash,
         limit,
