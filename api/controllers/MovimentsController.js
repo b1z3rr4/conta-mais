@@ -2,14 +2,19 @@ import createMovimentsService from "../services/moviments/createMoviments.servic
 import listMovimentsService from "../services/moviments/listMoviments.service";
 import updateMovimentsService from "../services/moviments/updateMoviments.service";
 import deleteMovimentsService from "../services/moviments/deleteMoviments.service";
+import decodeToken from "../services/auth/decodeToken";
 
 class MovimentsController {
     constructor(){}
     
     async getMoviment(req, res){
         const { id } = req.query;
+        const authorization = req.headers['authorization'];
+        const token = authorization.split(' ')[1]
+        const data = await decodeToken(token)
+        const idToken = data.id
         const service = new listMovimentsService();
-        const moviment = await service.listMoviments(id);
+        const moviment = await service.listMoviments(idToken, id);
         res.status(moviment.status).json({
             message: moviment.message
         })
@@ -22,7 +27,6 @@ class MovimentsController {
         res.status(moviment.status).json({
             message: moviment.message
         })
-
     }
 
     async putMoviment(req, res){
@@ -43,7 +47,6 @@ class MovimentsController {
         res.status(moviment.status).json({
             message: moviment.message
         })
-
     }
 }
 

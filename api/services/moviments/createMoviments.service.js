@@ -9,7 +9,6 @@ class createMovimentsService {
         const id = generatorId();
         const moviments = new movimentsInCash();
         const proceed = await moviments.define(value, type, id_bankAccount);
-        console.log(proceed)
         if(proceed){
             const repository = new MovimentsRepository();
             try{
