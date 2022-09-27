@@ -1,12 +1,811 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conta Mais</title>
-</head>
-<body>
-    <h1>Conta Mais</h1>
-</body>
-</html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Conta Mais</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5b469fc0-1514-47fc-a8ec-99bd587157b8" class="page sans"><header><h1 class="page-title">Conta Mais</h1></header><div class="page-body"><h1 id="c7598ac4-b2f1-4f11-bcd2-288fc1daba0f" class="">Introdução</h1><p id="2a839a2c-0a28-445a-944f-51c5e879be2d" class="">    Este documento tem como finalidade especificar as funcionalidades, regras de negócio utilizadas no projeto, tecnologias a serem utilizadas, metodologias de desenvolvimento, arquitetura, meios de comunicação da equipe, definição das tarefas principais e as prioridades.</p><p id="e3783904-f515-434e-b0a3-5038f7c58daf" class="">    Este projeto é voltado integralmente para estudantes de desenvolvimento web, profissionais de desenvolvimento de API, pequenos empreendedores e profissionais autônomos que buscam entender como a aplicação funciona e sua utilização.</p><p id="81cdd465-b7c4-4bc3-b835-ca8a9c76938b" class="">    Esta é uma  API que gerência dados de compra e vendas da empresa  enviados pelo usuário e devolve o balanço diário, mensal ou anual a depender da escolha do usuário e/ou dados enviados. Além disso, sendo limitado ao enquadramento MEI e EPP, retorna o cálculo do Simples Nacional do ano em questão.</p><p id="0c81983e-fe1d-48a5-9ff0-0f0bd8f52007" class="">    O propósito desse projeto é auxiliar os pequenos empreendedores que durante a pandemia foram prejudicados severamente com a queda nas vendas e/ou dificuldades para alavancar seus negócios. Boa parte desses profissionais pagam por esses serviços de gerenciamento de empresas e com esse sistema facilitando o acesso a essas informações e essa gestão eficiente do negócio ajuda o empreendedor e também aqueles que querem iniciar seus empreendimentos.</p><h1 id="94d26087-5d1c-4f07-a101-a92c717adbe1" class="">Requisitos funcionais</h1><ul id="00206a03-2ba3-4c76-b003-960d06fa42dc" class="toggle"><li><details open=""><summary><strong>Login</strong></summary><ul id="5b00063a-b6cf-47b9-acc3-724b4c8c6c8c" class="toggle"><li><details open=""><summary>Entradas</summary><ul id="a400dd53-305a-4d45-97c8-581c7b0027b7" class="bulleted-list"><li style="list-style-type:disc">E-mail ou CPF</li></ul><ul id="2a7e127b-80a0-4370-8973-2169d7c34d9e" class="bulleted-list"><li style="list-style-type:disc">Senha</li></ul></details></li></ul><ul id="ea0d20d1-bbe4-4190-9745-4fc2c8022ddf" class="toggle"><li><details open=""><summary>Processamento</summary><ul id="17ec9158-8d1d-4976-8f4a-28abefe705d0" class="bulleted-list"><li style="list-style-type:disc">Verificar se o usuário existe no banco de dados</li></ul><ul id="b5f2e7fb-1b7b-4003-8393-6033ed359755" class="bulleted-list"><li style="list-style-type:disc">Verificar se a senha corresponde a senha salva no banco de dados</li></ul></details></li></ul><ul id="841c1e4d-f26a-40e0-ac98-b20ae77871b6" class="toggle"><li><details open=""><summary>Saída</summary><ul id="9f3e9274-9600-424e-899a-6bc87975cce1" class="toggle"><li><details open=""><summary>Sucesso</summary><ul id="66bd2d5f-7c82-45c0-9b4a-8fe60293b7e6" class="bulleted-list"><li style="list-style-type:disc">Usuário logado.</li></ul></details></li></ul><ul id="a803a013-483a-4e20-b769-a6bc045154cb" class="toggle"><li><details open=""><summary>Erro</summary><ul id="e1c57abc-74e2-43b0-9689-28d6652c9577" class="bulleted-list"><li style="list-style-type:disc">E-mail, CPF e/ou senha inválido.</li></ul><ul id="01d49c22-8d0f-4fe0-8705-4f7de455a8fb" class="bulleted-list"><li style="list-style-type:disc">Usuário inexistente</li></ul><ul id="3d3489fe-3de2-4448-8c6b-97d9b11aea90" class="bulleted-list"><li style="list-style-type:disc">Campos obrigatórios não preenchidos</li></ul></details></li></ul></details></li></ul></details></li></ul><ul id="75709661-0c82-443d-8bed-9db340c86abd" class="toggle"><li><details open=""><summary><strong>Cadastro de usuário</strong></summary><ul id="5e9c0d06-e7f9-485c-ba57-382b53d4aff0" class="toggle"><li><details open=""><summary>Entradas</summary><ul id="164048e3-4cff-4f01-aa12-26677f2c48c3" class="bulleted-list"><li style="list-style-type:disc">E-mail</li></ul><ul id="3b465f59-70a5-48b9-b5f4-7a999d2f8bab" class="bulleted-list"><li style="list-style-type:disc">CPF</li></ul><ul id="127d1779-311b-48c9-b234-4f22176cc80d" class="bulleted-list"><li style="list-style-type:disc">Senha</li></ul></details></li></ul><ul id="ee3dc681-1668-4136-9193-ccecef22557a" class="toggle"><li><details open=""><summary>Processamento</summary><ul id="b0a55086-b51b-4856-9cbe-d32c505f5146" class="bulleted-list"><li style="list-style-type:disc">Verificar se e-mail já não existe no banco de dados</li></ul><ul id="832bdba5-ca13-426c-b7cd-82325b4d9849" class="bulleted-list"><li style="list-style-type:disc">Verificar se CPF já não existe no banco de dados</li></ul><ul id="5ca21643-7632-4039-a93d-45e7cfdcdd11" class="bulleted-list"><li style="list-style-type:disc">Verificar se a senha contém 8 caracteres, contém pelo menos uma letra maiúscula, uma letra minúscula e um símbolo.</li></ul></details></li></ul><ul id="646e4c8e-1715-42c8-9f9f-16a6264ec150" class="toggle"><li><details open=""><summary>Saída</summary><ul id="62503f43-cdcb-4c2d-8859-74a0efc39a3a" class="toggle"><li><details open=""><summary>Sucesso</summary><ul id="e52eadb3-1b76-4eda-acbc-bd4a03f87399" class="bulleted-list"><li style="list-style-type:disc">Cadastro realizado</li></ul></details></li></ul><ul id="37469537-a4dd-4711-a7be-20bc57cfbd1f" class="toggle"><li><details open=""><summary>Erro</summary><ul id="73f10cd3-0567-4f17-8b01-c59b13c2a684" class="bulleted-list"><li style="list-style-type:disc">E-mail já existente</li></ul><ul id="7cb71790-73df-4a37-b3fb-c3ea4af7fbc9" class="bulleted-list"><li style="list-style-type:disc">CPF já existente</li></ul><ul id="e9bb9166-5eeb-4be4-8351-364e4fa0ec09" class="bulleted-list"><li style="list-style-type:disc">Senha inferior a 8 caracteres</li></ul><ul id="274a8769-c32f-45a9-b825-dd0ab15b7c20" class="bulleted-list"><li style="list-style-type:disc">Senha precisa ter pelo menos uma letra maiúscula, uma letra minúscula e um símbolo.</li></ul></details></li></ul></details></li></ul></details></li></ul><ul id="d1d06562-9aa1-47c1-9e44-39126c4f54b1" class="toggle"><li><details open=""><summary><strong>Cadastro da Empresa</strong></summary><ul id="c8b67974-7c4a-403b-b79d-803e9ae3f8a8" class="toggle"><li><details open=""><summary>Entradas</summary><ul id="6589daf2-c941-4eab-a202-47883fe50801" class="bulleted-list"><li style="list-style-type:disc">CNPJ</li></ul><ul id="4eb26206-6038-4305-8989-1d93254b872e" class="bulleted-list"><li style="list-style-type:disc">Razão Social</li></ul><ul id="91756fa6-08b4-47f0-8119-b62bf1d742dc" class="bulleted-list"><li style="list-style-type:disc">Enquadramento da Empresa</li></ul><ul id="52c8cedb-2138-4ae3-8384-ae024783d79b" class="bulleted-list"><li style="list-style-type:disc">Anexo pertencente</li></ul><ul id="7a74b9a5-876c-4152-b6f5-1ebd0a5bf122" class="bulleted-list"><li style="list-style-type:disc">Alíquota</li></ul><ul id="54f20de4-c00a-4bcd-9c46-529d59ee4240" class="bulleted-list"><li style="list-style-type:disc">Senha</li></ul></details></li></ul><ul id="bb6b1fac-c10b-4f8a-a976-21f5cf35b951" class="toggle"><li><details open=""><summary>Processamento</summary><ul id="2cf0257e-ecc3-4471-ab92-085de41110e2" class="toggle"><li><details open=""><summary>Verificar se a empresa já foi cadastrada</summary><ul id="d3bb835d-e023-410f-8ab5-87bec4e3aa93" class="bulleted-list"><li style="list-style-type:disc">Verificar se a senha passada confere com a senha cadastrada</li></ul><ul id="a757f70a-bfe4-4236-8e2a-abfd1ccf681f" class="bulleted-list"><li style="list-style-type:disc">Retornar as informações visíveis</li></ul></details></li></ul><ul id="0f9eaf20-2d30-41fc-a4b1-8c813fd8e7a9" class="bulleted-list"><li style="list-style-type:disc">Salvar Informações no banco de dados caso a empresa não esteja cadastrada</li></ul></details></li></ul><ul id="67b8dc66-f2b8-47bf-8216-5ca242194638" class="toggle"><li><details open=""><summary>Saída</summary><ul id="a8548484-fe7f-49c6-9a0f-a2b70038d321" class="toggle"><li><details open=""><summary>Sucesso</summary><ul id="8e7aced0-4b57-4035-9849-937d67fa83a9" class="bulleted-list"><li style="list-style-type:disc">Empresa cadastrada</li></ul></details></li></ul><ul id="28b930e1-8d6e-44ea-b54b-c03d3628e776" class="toggle"><li><details open=""><summary>Erro</summary><ul id="5f9302e6-8e5e-4bed-9144-0e8218013649" class="bulleted-list"><li style="list-style-type:disc">Empresa já cadastrada</li></ul><ul id="2467ea78-4b77-425c-b3e8-e5198bbd2bd2" class="bulleted-list"><li style="list-style-type:disc">Senha inválida</li></ul><ul id="f9b817cf-6916-4cf5-9f46-c51637fc0610" class="bulleted-list"><li style="list-style-type:disc">Campos obrigatórios não preenchidos</li></ul></details></li></ul></details></li></ul></details></li></ul><ul id="41902ac2-1ade-41a8-b0d9-c836a2560166" class="toggle"><li><details open=""><summary><strong>Cadastro de contas</strong></summary><ul id="0e7ea5f4-21fc-4766-b0fe-d9e464dba2ab" class="toggle"><li><details open=""><summary>Entradas</summary><ul id="28fcfb45-afbd-458c-be56-66319054cab9" class="bulleted-list"><li style="list-style-type:disc">Agência</li></ul><ul id="22513a40-87d9-473b-80c7-0705f8bbb591" class="bulleted-list"><li style="list-style-type:disc">Conta</li></ul><ul id="dcb86aba-e7a4-4247-95eb-1afe91375fab" class="bulleted-list"><li style="list-style-type:disc">Instituição financeira</li></ul><ul id="f59dbdbf-d70d-4b51-815a-afe73ab4892c" class="bulleted-list"><li style="list-style-type:disc">Total em caixa</li></ul><ul id="63bf5a6e-fe73-46b7-b104-150f37c7da02" class="bulleted-list"><li style="list-style-type:disc">Informar limite da conta (opcional)</li></ul></details></li></ul><ul id="da51965f-bb75-4b84-b956-55181081f2b9" class="toggle"><li><details open=""><summary>Processamento</summary><ul id="7b862b98-971a-408b-a9de-8c0c96a803a3" class="bulleted-list"><li style="list-style-type:disc">Verificar se número da conta já foi utilizada</li></ul><ul id="56b162c7-0437-4a1e-ab68-0ea82706ae83" class="bulleted-list"><li style="list-style-type:disc">Salvar no banco de dados</li></ul></details></li></ul><ul id="b9430282-b9d9-4eba-8f77-d7571760ae71" class="toggle"><li><details open=""><summary>Saídas</summary><ul id="cdb72f68-9282-482d-a411-51157b1cb306" class="toggle"><li><details open=""><summary>Sucesso</summary><ul id="fdc5233a-3d25-4933-9997-35c7606ce007" class="bulleted-list"><li style="list-style-type:disc">Cadastro realizado com sucesso!</li></ul></details></li></ul><ul id="390fb52a-2888-4aef-a267-d63bb5111ee7" class="toggle"><li><details open=""><summary>Erro</summary><ul id="c25930ea-a2f6-43eb-9b65-973dfcfd7d1a" class="bulleted-list"><li style="list-style-type:disc">Conta já cadastrada</li></ul><ul id="5a7a1c1a-5d2d-42ca-83e6-d2a5bbd02690" class="bulleted-list"><li style="list-style-type:disc">Campos obrigatórios em branco</li></ul></details></li></ul></details></li></ul><p id="4fe63ed0-f77b-4d9d-bdf9-2e28f302968c" class="">
+</p></details></li></ul><ul id="6665ff21-f025-40f0-9e2a-0b72ff16367e" class="toggle"><li><details open=""><summary><strong>Cadastro de entradas e saídas</strong></summary><ul id="896050aa-4cda-4b25-8830-12813cbb3fdc" class="toggle"><li><details open=""><summary>Entradas</summary><ul id="3dc52a2c-f117-4b03-897c-f32b49f8a668" class="bulleted-list"><li style="list-style-type:disc">Tipo de transação</li></ul><ul id="be96fe87-6dfa-4ee2-a9e8-3708869e17d6" class="bulleted-list"><li style="list-style-type:disc">Pequena descrição</li></ul><ul id="a50fe89a-4494-450e-b40c-997d201e0977" class="bulleted-list"><li style="list-style-type:disc">Valor</li></ul><ul id="517b2e95-e30e-4995-814f-f340a60feb5d" class="bulleted-list"><li style="list-style-type:disc">Referenciar a conta</li></ul></details></li></ul><ul id="c2405b46-1e08-4f30-9be2-4c35357e6b0c" class="toggle"><li><details open=""><summary>Processamento</summary><ul id="a58f5ab8-c088-4262-b798-53cdde33e3e4" class="bulleted-list"><li style="list-style-type:disc">Verifica se a conta possui o valor em casos de saídas</li></ul><ul id="6e81f11d-38c1-433d-b87a-e54125c5a22d" class="bulleted-list"><li style="list-style-type:disc">Retirar ou inserir o valor na conta</li></ul></details></li></ul><ul id="fbcf6bbc-1ae3-43c2-8e63-27319854cca4" class="toggle"><li><details open=""><summary>Saída</summary><ul id="c7efbfc6-e739-45cc-a349-ade7a6ea098a" class="toggle"><li><details open=""><summary>Sucesso</summary><ul id="d7c519c9-8baa-496d-a619-3f67e48ba9e8" class="bulleted-list"><li style="list-style-type:disc">Uma mensagem de sucesso com o valor atualizado</li></ul></details></li></ul><ul id="49d2b9ec-65c1-414a-90cc-eeba6ee4a281" class="toggle"><li><details open=""><summary>Erro</summary><ul id="1ad9e841-bd11-4cea-9916-51943700cbc1" class="bulleted-list"><li style="list-style-type:disc">Conta não referenciada</li></ul><ul id="6f4bf7ef-8f65-4331-bc0c-4f57039de283" class="bulleted-list"><li style="list-style-type:disc">Tipo de transação não referenciado</li></ul><ul id="faf0ed8a-9099-4b49-9118-6ce9af197e33" class="bulleted-list"><li style="list-style-type:disc">Valor ultrapassou o limite da conta</li></ul></details></li></ul></details></li></ul></details></li></ul><h3 id="01aa1884-21cb-44e7-90e7-c5f68b4533d0" class="">Rodando a API</h3><pre id="cb30b471-528f-43d3-8c8e-6591e655e451" class="code code-wrap"><code># Clone este repositório
+$ git clone https://github.com/cleosilva/conta-mais.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd conta-mais
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação em modo de desenvolvimento
+$ npm start
+
+# O servidor inciará na porta:3001 - acesse http://localhost:3001</code></pre><h2 id="bcb01809-5b34-4aad-b4f0-683c76503f24" class="">Formato da resposta</h2><table id="ed7af4e1-fc44-443d-b85a-2b1f99c10fa5" class="simple-table"><tbody><tr id="fc4eb85a-6dfd-479a-bb87-b7d7a97c64ca"><th id="a_{y" class="simple-table-header-color simple-table-header" style="width:276px">Resposta da API</th><td id="T_:e" class="" style="width:429px">JSON</td></tr><tr id="c4103a12-f14c-4cff-bce9-fe8c30ab7b6b"><th id="a_{y" class="simple-table-header-color simple-table-header" style="width:276px">Métodos aceitos</th><td id="T_:e" class="" style="width:429px">GET</td></tr></tbody></table><h2 id="9d35f581-44b5-480e-8622-3e76c3e24722" class="">Rotas</h2><h3 id="77456b7e-e42f-4c68-962e-be198b7edea0" class="">User</h3><h3 id="e39d5cf6-08de-4f73-8d32-a7855d4f707f" class="">Criar usuário:</h3><pre id="54a1505c-3b8c-42f2-8b5d-418f67f35def" class="code"><code>https://conta-mais-production.up.railway.app/user/</code></pre><h3 id="d923d2e3-ffe6-4869-b6e4-ff7ce8712d16" class="">Parâmetros - Corpo da Requisição</h3><pre id="5a4405cd-4f66-49a5-a37a-984c0a4fd4f3" class="code"><code>{
+	&quot;name&quot;: &quot;Adm&quot;,
+	&quot;email&quot;: &quot;adm@contaMais.com&quot;,
+	&quot;cpf&quot;: &quot;19557254721&quot;,
+	&quot;password&quot;: &quot;Adminis@123&quot;
+}</code></pre><h3 id="c4ca5cf5-6010-472b-991a-26526ba60216" class="">Resposta</h3><pre id="a25a0850-8690-4827-a6ed-0f38c104a98e" class="code"><code>{
+	&quot;id&quot;: &quot;d5d78738-857e-4d09-8105-0af73f09bfbe&quot;,
+	&quot;name&quot;: &quot;Adm&quot;,
+	&quot;email&quot;: &quot;adm@contaMais.com&quot;,
+	&quot;password_hash&quot;: &quot;738f8e160cf7f127b000fe9f1b37e4225d80a72ad7709e1dbf44cf2df67eb6e9f0ec67293f17bb6ad92521b2968656e86b741a563eef984baa62d30315bcc434&quot;,
+	&quot;cpf&quot;: &quot;19557254721&quot;
+}</code></pre><h3 id="bc877efd-66b2-419b-a176-5e08b0b3c1fa" class="">Listar usuários:</h3><pre id="01f4ce50-1147-4e80-b3c0-f19e7dd652e9" class="code"><code>https://conta-mais-production.up.railway.app/user/list</code></pre><h3 id="cd991667-b150-4a31-8038-c62c1b89ceb1" class="">Resposta</h3><pre id="dd919c48-0f27-4e32-8ebd-4cbdaf06a883" class="code"><code>[
+	{
+		&quot;id&quot;: &quot;d1000da0-8921-4b88-9a6d-ccf5c5b473ff&quot;,
+		&quot;name&quot;: &quot;Suporte&quot;,
+		&quot;email&quot;: &quot;suporte@contaMais.com&quot;,
+		&quot;password_hash&quot;: &quot;5494069f5953f5c4350715a35a18edb01afe6b2b682e67688d9691e47f15e813bb6144a534f83c9a6cb8122a647e4a6aeb8f6ac8625525e869b8707201a0d743&quot;,
+		&quot;cpf&quot;: &quot;191254687321&quot;
+	},
+	{
+		&quot;id&quot;: &quot;d5d78738-857e-4d09-8105-0af73f09bfbe&quot;,
+		&quot;name&quot;: &quot;Adm&quot;,
+		&quot;email&quot;: &quot;adm@contaMais.com&quot;,
+		&quot;password_hash&quot;: &quot;738f8e160cf7f127b000fe9f1b37e4225d80a72ad7709e1dbf44cf2df67eb6e9f0ec67293f17bb6ad92521b2968656e86b741a563eef984baa62d30315bcc434&quot;,
+		&quot;cpf&quot;: &quot;19557254721&quot;
+	}
+]</code></pre><h3 id="9c0162d3-2331-465f-9345-a8e1e9e3e2be" class="">Atualizar usuário:</h3><pre id="b81f2333-8c8c-4034-944c-55eac2ed6711" class="code"><code>https://conta-mais-production.up.railway.app/user/update/:id</code></pre><h3 id="dfb2d44e-38af-4cde-9c7e-efcd7ff5029a" class="">Parâmetros - Corpo da Requisição</h3><pre id="de041bb9-be5e-4a91-9ce7-13467abb9120" class="code"><code>{
+	&quot;name&quot;: &quot;Thaiane Camarda&quot;,
+	&quot;email&quot;: &quot;thaiane@gmail.com&quot;,
+	&quot;cpf&quot;: &quot;78715498752&quot;
+}</code></pre><h3 id="f3668af1-f4f2-4ee9-8e34-b30429927ae1" class="">Resposta</h3><pre id="88c2ed5f-950d-4c7e-b256-60378c783b60" class="code"><code>&quot;Usuário atualizado com sucesso!&quot;</code></pre><h3 id="80f57f74-89bc-45d0-9fd0-925715c5f587" class="">Excluir usuário:</h3><pre id="21be7c00-e461-4714-ad50-b392397e69bc" class="code"><code>https://conta-mais-production.up.railway.app/user/delete/:id</code></pre><h3 id="66c6a27d-69a5-4115-89b2-5fd81890419e" class="">Resposta</h3><pre id="8021782f-01ff-46a0-b360-58cb18c99e05" class="code"><code>&quot;Deletado com sucesso!&quot;</code></pre><h3 id="6c69e8ba-3062-411e-adbc-b53ece7b2150" class="">Business</h3><h3 id="133ea585-2b4c-4767-955f-14f73cc18791" class="">Criar empresa:</h3><pre id="ef06cbbd-f80b-4222-a4d1-0eda991de2f4" class="code"><code>https://conta-mais-production.up.railway.app/business/</code></pre><h3 id="b611fb93-020a-408b-a3fd-d9c83147bdc8" class="">Parâmetros - Corpo da Requisição</h3><pre id="37e63c70-860d-4e9e-9ad0-65bff5f1f361" class="code"><code>{
+	&quot;cnpj&quot;: &quot;13241243123135&quot;,
+	&quot;company&quot;: &quot;Conta Menos Soluções S.A&quot;,
+	&quot;user_id&quot;: &quot;d5d78738-857e-4d09-8105-0af73f09bfbe&quot;
+}</code></pre><h3 id="799b4444-37ba-4f4b-b7e5-f16f67c1d11e" class="">Resposta</h3><pre id="e4da1a6f-dd92-42ef-b6ae-43766c696aed" class="code"><code>{
+	&quot;message&quot;: {
+		&quot;id&quot;: &quot;91453cfb-42e7-45ca-8baf-4cc35249329b&quot;,
+		&quot;cnpj&quot;: &quot;13241243123135&quot;,
+		&quot;company&quot;: &quot;Conta Menos Soluções S.A&quot;,
+		&quot;user_id&quot;: &quot;d5d78738-857e-4d09-8105-0af73f09bfbe&quot;
+	}
+}</code></pre><h3 id="b800d36c-f381-48e7-a7a9-694869acdbcf" class="">Listar empresa:</h3><pre id="65801bb7-4bad-4042-a5f1-431dcaaf1b9d" class="code"><code>https://conta-mais-production.up.railway.app/business/list</code></pre><h3 id="eba1ce50-fbfd-460a-b888-eb526fff9898" class="">Resposta</h3><pre id="5f66ff5b-9654-4b59-a66f-dfda9711a1e3" class="code"><code>{
+	&quot;message&quot;: [
+		{
+			&quot;id&quot;: &quot;27939899-c905-4492-acea-22956d563a8e&quot;,
+			&quot;cnpj&quot;: &quot;13241243123134&quot;,
+			&quot;company&quot;: &quot;Conta Mais Soluções S.A&quot;,
+			&quot;user_id&quot;: &quot;d5d78738-857e-4d09-8105-0af73f09bfbe&quot;
+		},
+		{
+			&quot;id&quot;: &quot;91453cfb-42e7-45ca-8baf-4cc35249329b&quot;,
+			&quot;cnpj&quot;: &quot;13241243123135&quot;,
+			&quot;company&quot;: &quot;Conta Menos Soluções S.A&quot;,
+			&quot;user_id&quot;: &quot;d5d78738-857e-4d09-8105-0af73f09bfbe&quot;
+		}
+	]
+}</code></pre><h3 id="b3ec6f2c-bd9a-454b-994e-b37b15cf5245" class="">Atualizar empresa:</h3><pre id="212387dd-f26e-408e-bbd9-fe99e1137ab2" class="code"><code>https://conta-mais-production.up.railway.app/bsiness/update/:id</code></pre><h3 id="87a17b18-ffb2-4302-9fef-792d60f238d3" class="">Parâmetros - Corpo da Requisição</h3><pre id="f4ccf919-7e03-405c-a532-3ef8785ab84c" class="code"><code>{
+	&quot;cnpj&quot;: &quot;12345678910123&quot;,
+	&quot;company&quot;: &quot;Conta Mais S.A&quot;
+}</code></pre><h3 id="68a31960-6ce9-435d-b5c8-242dfeecea26" class="">Resposta</h3><pre id="a82705b9-818b-4fa9-924b-19370c2d528c" class="code"><code>{
+	&quot;message&quot;: &quot;Empresa atualizada!&quot;
+}</code></pre><h3 id="072674ca-89dd-4956-9647-f365f33cee0e" class="">Excluir empresa:</h3><pre id="fc3038e6-6f0e-4fc3-a67e-4d18db6b6d9d" class="code"><code>https://conta-mais-production.up.railway.app/business/delete/:id</code></pre><h3 id="3f38bde3-f916-46a4-87f9-639b7060dd80" class="">Resposta</h3><pre id="fd59c66e-e99f-4db9-a134-d6ed51f46cb2" class="code"><code>{
+	&quot;message&quot;: &quot;Deletado com sucesso!&quot;
+}</code></pre><h3 id="366c9890-53a5-4824-a768-62f6b6e589b2" class="">Bank Account</h3><h3 id="9de5457f-3a24-4f39-9d2f-cb26ff1768ea" class="">Criar conta bancária:</h3><pre id="346c4775-47e4-4ec2-9971-6bbb703f02d0" class="code"><code>https://conta-mais-production.up.railway.app/bank/</code></pre><h3 id="7c4d4284-d423-4ac7-998c-52e809fe4add" class="">Parâmetros - Corpo da Requisição</h3><pre id="2fcf8376-9479-4b12-808c-1aa6a56cdd3e" class="code"><code>{
+	&quot;financial_institution&quot;: &quot;Nubank&quot;,
+	&quot;cash&quot;: 1000,
+	&quot;limit&quot;: 0,
+	&quot;id_business&quot;: &quot;27939899-c905-4492-acea-22956d563a8e&quot;
+}</code></pre><h3 id="f61c581d-f886-46f4-877e-607f1da03035" class="">Resposta</h3><pre id="1f0ef7d3-8941-4765-8fd3-c6d9d14b421c" class="code"><code>{
+	&quot;message&quot;: {
+		&quot;id&quot;: &quot;6ca7a256-559f-47c1-884c-bc23d751d3de&quot;,
+		&quot;financial_institution&quot;: &quot;Nubank&quot;,
+		&quot;cash&quot;: 1000,
+		&quot;limit&quot;: 0,
+		&quot;id_business&quot;: &quot;27939899-c905-4492-acea-22956d563a8e&quot;
+	}
+}</code></pre><h3 id="12dc6ab0-a8b7-4ff5-963d-60e763648e23" class="">Listar conta bancária:</h3><pre id="038915cd-2afc-491f-bc4e-e3e884487c38" class="code"><code>https://conta-mais-production.up.railway.app/bank/list</code></pre><h3 id="24ef6743-161c-44af-8bd1-1004626612c9" class="">Resposta</h3><pre id="6d110576-ca94-4f82-a160-b010c68e3ad4" class="code"><code>{
+	&quot;message&quot;: [
+		{
+			&quot;id&quot;: &quot;08b01777-85f1-4bd6-86a4-d0ee345f3cf4&quot;,
+			&quot;financial_institution&quot;: &quot;Nubank&quot;,
+			&quot;cash&quot;: 1000,
+			&quot;limit&quot;: 0,
+			&quot;id_business&quot;: &quot;c2020a47-faed-4aa1-92c8-50fe44314d9c&quot;
+		}
+	]
+}</code></pre><h3 id="5744acef-012f-4b42-a16c-5170a3fb0eb5" class="">Atualizar conta bancária:</h3><pre id="0b121e6d-23f4-4d3e-9553-d060e9a39fad" class="code"><code>https://conta-mais-production.up.railway.app/bank/update/:id</code></pre><h3 id="22e16683-93fb-4e7f-9fa6-b0aa054a304c" class="">Parâmetros - Corpo da Requisição</h3><pre id="e35cbfbc-4299-4afd-92b0-7b0852704362" class="code"><code>{
+	&quot;financial_institution&quot;: &quot;Itau&quot;,
+	&quot;limit&quot;: 500
+}</code></pre><h3 id="fea50073-32b0-4510-8019-77ba3d8f6209" class="">Resposta</h3><pre id="18417531-53fe-4893-aba5-7675d610d8a3" class="code"><code>{
+	&quot;message&quot;: &quot;Conta atualizada!&quot;
+}</code></pre><h3 id="fba50e2e-1118-4a85-8df4-3189f41bfae0" class="">Excluir conta bancária:</h3><pre id="b6e30394-f865-480c-9fff-5a43c1b12505" class="code"><code>https://conta-mais-production.up.railway.app/bank/delete/:id</code></pre><h3 id="ced5d202-d51a-4eea-b349-2e538d499601" class="">Resposta</h3><pre id="68f5033a-ce34-46a1-8f3b-18165d308861" class="code"><code>{
+	&quot;message&quot;: &quot;Deletado com sucesso!&quot;
+}</code></pre><h3 id="443b2ca0-87c8-4631-95f6-7270cd52d46c" class="">Moviments</h3><h3 id="da313620-81e2-49c0-be18-818409f6701d" class="">Criar movimentação:</h3><pre id="6844132f-ad3b-4a31-999d-faecd2cc4cd3" class="code"><code>https://conta-mais-production.up.railway.app/moviments/</code></pre><h3 id="6dd981c7-254b-48a0-a322-47bcc110f0ef" class="">Parâmetros - Corpo da Requisição</h3><pre id="610f07ee-5f22-4adf-8951-02d43c8374eb" class="code"><code>{
+	&quot;name&quot;: &quot;Pagamento do Itau&quot;,
+	&quot;description&quot;: &quot;Cartao de credito&quot;,
+	&quot;value&quot;: 3500,
+	&quot;type&quot;: &quot;saida&quot;,
+	&quot;id_bankAccount&quot;: &quot;e77a37f3-6b72-4620-aca1-f36ca2310c20&quot;
+}</code></pre><h3 id="67005d50-ecfd-459b-8351-d5c8cec1235e" class="">Resposta</h3><pre id="18500524-9678-402b-8aec-04d967ea3a76" class="code"><code>{
+	&quot;message&quot;: {
+		&quot;id&quot;: &quot;a3ebbbad-8011-459e-822c-de09405e0624&quot;,
+		&quot;name&quot;: &quot;Pagamento do Itau&quot;,
+		&quot;description&quot;: &quot;Cartao de credito&quot;,
+		&quot;value&quot;: 200,
+		&quot;type&quot;: &quot;saida&quot;,
+		&quot;id_bankAccount&quot;: &quot;0e16c81e-ed91-4b5a-86bf-1bf7a1e5a1d1&quot;
+	}
+}</code></pre><h3 id="5bffa8a9-6e08-4433-82f7-d43df1a29402" class="">Listar movimentos:</h3><pre id="ce9b693d-7d14-439e-bd59-9ab026586054" class="code"><code>https://conta-mais-production.up.railway.app/moviments/list</code></pre><h3 id="2770d09e-615a-414d-b5a8-8868999a4eea" class="">Resposta</h3><pre id="7cc2937c-e867-4c61-97b5-8fbe60533b37" class="code"><code>{
+	&quot;message&quot;: [
+		{
+			&quot;id&quot;: &quot;a3ebbbad-8011-459e-822c-de09405e0624&quot;,
+			&quot;name&quot;: &quot;Pagamento do Itau&quot;,
+			&quot;description&quot;: &quot;Cartao de credito&quot;,
+			&quot;value&quot;: 200,
+			&quot;type&quot;: &quot;saida&quot;,
+			&quot;id_bankAccount&quot;: &quot;0e16c81e-ed91-4b5a-86bf-1bf7a1e5a1d1&quot;
+		}
+	]
+}</code></pre><h3 id="9bb961a5-cce3-475b-a53c-556df9ebc072" class="">Atualizar movimentos:</h3><pre id="71cd15b6-738b-4cc3-9e40-ffcff051d4ce" class="code"><code>https://conta-mais-production.up.railway.app/moviments/update/:id</code></pre><h3 id="bbae49ee-1ceb-46e0-8987-6c460bdc3fd5" class="">Parâmetros - Corpo da Requisição</h3><pre id="41368a37-157e-4e02-8cdb-3c7165985fab" class="code"><code>{
+	&quot;name&quot;: &quot;Venda de produtos&quot;,
+	&quot;description&quot;: &quot;venda de produtos&quot;,
+	&quot;value&quot;: 5000,
+	&quot;type&quot;: &quot;Saida&quot;
+}</code></pre><h3 id="b22bddef-633b-4620-acdf-f9f11323f564" class="">Resposta</h3><pre id="3f4793f1-877b-499a-937d-9404504cf3c2" class="code"><code>{
+	&quot;message&quot;: &quot;Atualizado com sucesso!&quot;
+}</code></pre><h3 id="973854ac-e54f-4e24-9634-5cf795e214cf" class="">Excluir movimento:</h3><pre id="89f2d7c4-1d7c-47ce-9b38-0eb595df5c5f" class="code"><code>https://conta-mais-production.up.railway.app/bank/delete/:id</code></pre><h3 id="def2d78c-b391-4d6d-a767-95e594f898e9" class="">Resposta</h3><pre id="59c7426d-2b4a-49b1-89af-617adae3960e" class="code"><code>{
+	&quot;message&quot;: &quot;Deletado com sucesso!&quot;
+}</code></pre><p id="0ed58a99-c988-466a-8cf9-ce4ffbafd8a1" class="">
+</p></div></article></body></html>
