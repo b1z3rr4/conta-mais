@@ -6,6 +6,9 @@ class SearchById {
     constructor(){}
 
     async searchBusinessByUserId(idUser){
+        if(!idUser){
+            return []
+        }
         this.business = await BusinessModel.findAll({
             where: {
                 user_id: idUser
