@@ -36,8 +36,7 @@ class businessValidator {
                 'test-invalid-cnpj',
                 'CNPJ inválido!',
                 (cnpj) => cnpjValidator(cnpj)),
-            company: yup.string().strict(),
-            user_id: yup.string().strict()
+            company: yup.string().strict()
         });
 
         await schema.validate(req.body).catch(err => {

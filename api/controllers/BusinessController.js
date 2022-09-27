@@ -31,13 +31,12 @@ class BusinessController {
 
   async updateBusiness(req, res) {
     const { id } = req.params;
-    const { cnpj, company, user_id } = req.body;
+    const { cnpj, company } = req.body;
     const service = new updateBusinessService();
     const business = await service.updateBusiness(
       id,
       cnpj,
-      company,
-      user_id
+      company
     );
     res.status(business.status).json({
       message: business.message,

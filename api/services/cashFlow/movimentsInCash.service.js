@@ -1,8 +1,10 @@
 import listBankAccountService from "../bankAccount/listBankAccount.service";
 import updateBankAccountService from "../bankAccount/updateBankAccount.service";
+import listMovimentsService from '../moviments/listMoviments.service';
 
 const getBankAccount = new listBankAccountService();
 const updateBankAccount = new updateBankAccountService();
+const getMoviments = new listMovimentsService();
 
 class movimentsInCash {
 	constructor() {}
@@ -69,6 +71,60 @@ class movimentsInCash {
 			return false;
 		}
 		return false;
+	}
+
+	async updateCashInFlow(id, newMoviment){
+		const result = await getMoviments.listMoviments(undefined, id);
+		const oldMoviment = result.message;
+		if(oldMoviment.type !== newMoviment.type){
+			if(oldMoviment === 'entrada'){
+				const result = await this.outflow(oldMoviment.id_bankAccount, oldMoviment.value)
+				if(result) {
+					const result = await this.outflow(oldMoviment.id_bankAccount, newMoviment.value)
+					return result
+				}
+				return false;
+			} else {
+				const result = await this.inflow(oldMoviment.id_bankAccount, oldMoviment.value)
+				if(result) {
+					const result = await this.inflow(oldMoviment.id_bankAccount, newMoviment.value)
+					return result
+				}
+				return false;
+			}
+		} else if (oldMoviment.value !== newMoviment.value) {
+			if(oldMoviment < newMoviment){
+				const diference = newMoviment - oldMoviment;
+				if(oldMoviment.type === 'entrada'){
+					const result = await this.inflow(oldMoviment.id_bankAccount, diference)
+					return result
+				} else {
+					const result = await this.outflow(oldMoviment.id_bankAccount, diference)
+					return result
+				}
+			} else {
+				if(oldMoviment.type === 'entrada'){
+					const result = await this.outflow(oldMoviment.id_bankAccount, diference)
+					return result
+				} else {
+					const result = await this.inflow(oldMoviment.id_bankAccount, diference)
+					return result
+				}
+			}
+		}
+		return true;
+	}
+
+	async deleteCashInflow(id){
+		const result = await getMoviments.listMoviments(undefined, id);
+		const oldMoviment = result.message;
+		if(oldMoviment.type === "entrada"){
+			const result = await this.outflow(oldMoviment.id_bankAccount, oldMoviment.value)
+			return result
+		} else {
+			const result = await this.inflow(oldMoviment.id_bankAccount, oldMoviment.value)
+			return result
+		}
 	}
 }
 
