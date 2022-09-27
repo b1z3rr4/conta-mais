@@ -7,16 +7,12 @@ class listBusinessService {
     async listBusiness(idToken, id){
         this.repositoryBusiness = new BusinessRepository();
         this.repositorySearch = new SearchById();
-        
         if(id){
             try{
                 this.business = await this.repositoryBusiness.get(id);
                 return {
                     status: 200,
-                    message: {
-                        ...this.business,
-
-                    }
+                    message: this.business
                 }
             } catch(e){
                 console.log(e);
