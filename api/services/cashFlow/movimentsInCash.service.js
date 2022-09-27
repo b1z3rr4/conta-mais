@@ -75,7 +75,9 @@ class movimentsInCash {
 
 	async updateCashInFlow(id, newMoviment){
 		const result = await getMoviments.listMoviments(undefined, id);
-		const oldMoviment = result.message;
+		const [ MovimentModel ] = result.message
+		const oldMoviment = MovimentModel.toJSON();
+		console.log(oldMoviment)
 		if(oldMoviment.type !== newMoviment.type){
 			if(oldMoviment === 'entrada'){
 				const result = await this.outflow(oldMoviment.id_bankAccount, oldMoviment.value)
@@ -117,7 +119,8 @@ class movimentsInCash {
 
 	async deleteCashInflow(id){
 		const result = await getMoviments.listMoviments(undefined, id);
-		const oldMoviment = result.message;
+		const [ MovimentModel ] = result.message
+		const oldMoviment = MovimentModel.toJSON();
 		if(oldMoviment.type === "entrada"){
 			const result = await this.outflow(oldMoviment.id_bankAccount, oldMoviment.value)
 			return result

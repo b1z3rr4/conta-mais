@@ -37,15 +37,13 @@ class BankAccountController {
 
   async updateBank(req, res) {
     const { id } = req.params;
-    const { financial_institution, cash, limit, id_business } =
+    const { financial_institution, limit } =
       req.body;
     const service = new updateBankAccountService();
     const bankAccount = await service.updateBankAccount(
       id,
       financial_institution,
-      cash,
-      limit,
-      id_business
+      limit
     );
     res.status(bankAccount.status).json({
       message: bankAccount.message,
