@@ -356,12 +356,6 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "agency": {
-                                        "type": "number"
-                                    },
-                                    "account": {
-                                        "type": "number"
-                                    },
                                     "financial_institution": {
                                         "type": "string"
                                     },
@@ -373,8 +367,6 @@
                                     }
                                 },
                                 "example": {
-                                    "agency": 1234,
-	                                "account": 12345,
 	                                "financial_institution": "nomeBanco",
 	                                "cash": 5000,
 	                                "limit": 1000

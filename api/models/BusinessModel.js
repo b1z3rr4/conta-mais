@@ -24,10 +24,6 @@ BusinessModel.init(
     user_id: {
       type: Sequelize.UUID,
       allowNull: false
-    },
-    cash_flow: {
-      type: Sequelize.FLOAT,
-      allowNull: true
     }
   },
   {

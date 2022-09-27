@@ -13,14 +13,6 @@ BankAccountModel.init(
       allowNull: false,
       primaryKey: true,
     },
-    agency: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
-    account: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
     financial_institution: {
       type: Sequelize.STRING,
       allowNull: false,
